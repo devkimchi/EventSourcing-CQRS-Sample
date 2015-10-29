@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Repositories", "EventSourcingCqrsSample.Repositories\EventSourcingCqrsSample.Repositories.csproj", "{828695EC-67AD-42AA-B7B9-4B1FD76F461F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Services", "EventSourcingCqrsSample.Services\EventSourcingCqrsSample.Services.csproj", "{8DE89CBB-5835-41D8-9183-00CB3296BFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Events", "EventSourcingCqrsSample.Events\EventSourcingCqrsSample.Events.csproj", "{B3531B0F-2BBA-4748-B070-8A99D2F557CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.EventProcessors", "EventSourcingCqrsSample.EventProcessors\EventSourcingCqrsSample.EventProcessors.csproj", "{BAD1320E-28F7-4BCA-B388-17862755E147}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1FDA3FE9-D207-4E5A-9E7A-577412733810}"
+	ProjectSection(SolutionItems) = preProject
+		EventSourcingCqrsSample.sln.DotSettings = EventSourcingCqrsSample.sln.DotSettings
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{828695EC-67AD-42AA-B7B9-4B1FD76F461F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828695EC-67AD-42AA-B7B9-4B1FD76F461F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828695EC-67AD-42AA-B7B9-4B1FD76F461F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828695EC-67AD-42AA-B7B9-4B1FD76F461F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE89CBB-5835-41D8-9183-00CB3296BFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE89CBB-5835-41D8-9183-00CB3296BFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE89CBB-5835-41D8-9183-00CB3296BFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE89CBB-5835-41D8-9183-00CB3296BFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
