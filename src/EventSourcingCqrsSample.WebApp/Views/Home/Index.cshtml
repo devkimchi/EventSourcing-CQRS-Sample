@@ -3,5 +3,42 @@
     ViewBag.Title = "Event Sourcing and CQRS Sample";
 }
 
-<h2>@ViewBag.Title</h2>
+<h1>@ViewBag.Title</h1>
 
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h2>Input</h2>
+
+        <div user-registration></div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h2>Materialised View</h2>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <h2>Actual Data Store</h2>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/angular")
+
+    <!-- Main entry for Angular -->
+    <script src="~/App/App.js"></script>
+
+    <!-- Register models -->
+    <script src="~/App/models/registrationModel.js"></script>
+
+    <!-- Register factories -->
+    <script src="~/App/factories/salutationsFactory.js"></script>
+
+    <!-- Register components/directives -->
+    <script src="~/App/components/userRegistration/userRegistration.js"></script>
+
+    <!-- Bind Angular to the page -->
+    <script>
+        angular.element(document).ready(function() {
+            angular.bootstrap(document, ["app"]);
+        });
+    </script>
+}

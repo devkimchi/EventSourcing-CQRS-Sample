@@ -4,6 +4,8 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 
+using Newtonsoft.Json.Serialization;
+
 using Owin;
 
 namespace EventSourcingCqrsSample.WebApp
@@ -35,12 +37,15 @@ namespace EventSourcingCqrsSample.WebApp
             }
 
             var config = new HttpConfiguration()
-            {
-                DependencyResolver = new AutofacWebApiDependencyResolver(container),
-            };
+                             {
+                                 DependencyResolver = new AutofacWebApiDependencyResolver(container),
+                             };
 
             // Routes
             config.MapHttpAttributeRoutes();
+
+            // Formatters
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             builder.UseWebApi(config);
         }
