@@ -54,21 +54,21 @@ namespace EventSourcingCqrsSample.Services
         }
 
         /// <summary>
-        /// Consumes the list of events.
+        /// Processes the list of events.
         /// </summary>
         /// <param name="evs">List of events.</param>
         /// <returns>Returns <c>True</c>, if all events have been consumed; otherwise returns <c>False.</c></returns>
-        public bool Consume(IEnumerable<BaseEvent> evs)
+        public bool ProcessEvents(IEnumerable<BaseEvent> evs)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Consumes the list of events asynchronously.
+        /// Processes the list of events asynchronously.
         /// </summary>
         /// <param name="evs">List of events.</param>
         /// <returns>Returns <c>True</c>, if all events have been consumed; otherwise returns <c>False.</c></returns>
-        public async Task<bool> ConsumeAsync(IEnumerable<BaseEvent> evs)
+        public async Task<bool> ProcessEventsAsync(IEnumerable<BaseEvent> evs)
         {
             var results = new List<bool>();
             using (var uow = this._uowm.CreateInstance<SampleDbContext>())

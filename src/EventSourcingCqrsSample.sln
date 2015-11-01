@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1FDA3FE9-D
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.WebApp", "EventSourcingCqrsSample.WebApp\EventSourcingCqrsSample.WebApp.csproj", "{4346967B-9B9B-4CA0-9944-90AA1A6E238D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

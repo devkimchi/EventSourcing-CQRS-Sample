@@ -7,6 +7,8 @@
       <Value>dest</Value>
       <Value>str</Value>
       <Value>uowm</Value>
+      <Value>startup</Value>
+      <Value>fwlink</Value>
     </CollectionProperty>
     <StringProperty Name="Culture">en-GB</StringProperty>
   </GlobalSettings>
