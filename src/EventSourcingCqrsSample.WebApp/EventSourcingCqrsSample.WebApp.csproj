@@ -200,8 +200,13 @@
     <Compile Include="App_Start\MvcConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InputValueChangedEventController.cs" />
     <Compile Include="Controllers\SalutationController.cs" />
     <Compile Include="Models\Home\HomeIndexViewModel.cs" />
+    <Compile Include="Models\Requests\BaseRequest.cs" />
+    <Compile Include="Models\Requests\SalutationChangeRequest.cs" />
+    <Compile Include="Models\Responses\BaseResponse.cs" />
+    <Compile Include="Models\Responses\SalutationChangeResponse.cs" />
     <Compile Include="Models\Salutations\Salutation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

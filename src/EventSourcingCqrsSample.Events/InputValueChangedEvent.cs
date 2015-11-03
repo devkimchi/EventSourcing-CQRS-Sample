@@ -6,8 +6,18 @@
     public abstract class InputValueChangedEvent : BaseEvent
     {
         /// <summary>
-        /// Gets or sets the value.
+        /// Gets or sets the element Id.
         /// </summary>
-        public string Value { get; set; }
+        public string ElementId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the element name.
+        /// </summary>
+        public string ElementName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the element value.
+        /// </summary>
+        public string ElementValue { get; set; }
     }
 }

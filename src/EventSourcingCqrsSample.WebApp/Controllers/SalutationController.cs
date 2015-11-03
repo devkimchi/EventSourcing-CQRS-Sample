@@ -7,7 +7,7 @@ using EventSourcingCqrsSample.WebApp.Models.Salutations;
 namespace EventSourcingCqrsSample.WebApp.Controllers
 {
     /// <summary>
-    /// The salutation controller.
+    /// This represents the API controller entity for salutation.
     /// </summary>
     [RoutePrefix("api/salutations")]
     public class SalutationController : ApiController
