@@ -202,12 +202,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InputValueChangedEventController.cs" />
     <Compile Include="Controllers\SalutationController.cs" />
-    <Compile Include="Models\Home\HomeIndexViewModel.cs" />
-    <Compile Include="Models\Requests\BaseRequest.cs" />
-    <Compile Include="Models\Requests\SalutationChangeRequest.cs" />
-    <Compile Include="Models\Responses\BaseResponse.cs" />
-    <Compile Include="Models\Responses\SalutationChangeResponse.cs" />
-    <Compile Include="Models\Salutations\Salutation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -226,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\App.ts" />
@@ -243,6 +238,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventSourcingCqrsSample.Models\EventSourcingCqrsSample.Models.csproj">
+      <Project>{3218be2a-22d0-40a8-bae5-713068ddfc09}</Project>
+      <Name>EventSourcingCqrsSample.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

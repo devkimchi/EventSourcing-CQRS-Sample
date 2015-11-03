@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-using EventSourcingCqrsSample.WebApp.Models.Home;
+using EventSourcingCqrsSample.Models.ViewModels.Home;
 
 namespace EventSourcingCqrsSample.WebApp.Controllers
 {

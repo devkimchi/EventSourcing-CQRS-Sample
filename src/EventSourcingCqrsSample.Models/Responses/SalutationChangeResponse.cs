@@ -1,4 +1,4 @@
-﻿namespace EventSourcingCqrsSample.WebApp.Models.Responses
+﻿namespace EventSourcingCqrsSample.Models.Responses
 {
     /// <summary>
     /// This represents the response entity for the salutation changed event.

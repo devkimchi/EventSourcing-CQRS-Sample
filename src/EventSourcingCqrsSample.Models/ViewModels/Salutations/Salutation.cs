@@ -1,4 +1,4 @@
-﻿namespace EventSourcingCqrsSample.WebApp.Models.Salutations
+﻿namespace EventSourcingCqrsSample.Models.ViewModels.Salutations
 {
     /// <summary>
     /// This represents the entity for salutation.

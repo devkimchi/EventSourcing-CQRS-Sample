@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 
-using EventSourcingCqrsSample.WebApp.Models.Salutations;
+using EventSourcingCqrsSample.Models.ViewModels.Salutations;
 
 namespace EventSourcingCqrsSample.WebApp.Controllers
 {

@@ -1,4 +1,4 @@
-﻿namespace EventSourcingCqrsSample.WebApp.Models.Requests
+﻿namespace EventSourcingCqrsSample.Models.Requests
 {
     /// <summary>
     /// This represents the base request entity.

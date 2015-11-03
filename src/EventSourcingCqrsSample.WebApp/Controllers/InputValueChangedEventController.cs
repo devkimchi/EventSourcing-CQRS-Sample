@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 
-using EventSourcingCqrsSample.WebApp.Models.Requests;
-using EventSourcingCqrsSample.WebApp.Models.Responses;
+using EventSourcingCqrsSample.Models.Requests;
+using EventSourcingCqrsSample.Models.Responses;
 
 namespace EventSourcingCqrsSample.WebApp.Controllers
 {
@@ -18,7 +18,7 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
         /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
         /// <returns>Returns the <see cref="SalutationChangeResponse" /> instance.</returns>
         [HttpPost]
-        [Route("salutations-changed")]
+        [Route("salutation-changed")]
         public virtual async Task<SalutationChangeResponse> SetSalutation([FromBody] SalutationChangeRequest request)
         {
             var response = new SalutationChangeResponse();
