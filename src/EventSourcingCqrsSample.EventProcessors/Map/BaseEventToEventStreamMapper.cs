@@ -43,7 +43,7 @@ namespace EventSourcingCqrsSample.EventProcessors.Map
 
             this.Initialise();
 
-            var mapped = Mapper.Map<EventStream>(ev as T);
+            var mapped = Mapper.Map<EventStream>(ev);
             return mapped;
         }
 

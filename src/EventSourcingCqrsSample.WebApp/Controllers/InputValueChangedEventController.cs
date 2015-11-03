@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 using EventSourcingCqrsSample.Models.Requests;
 using EventSourcingCqrsSample.Models.Responses;
+using EventSourcingCqrsSample.Services;
 
 namespace EventSourcingCqrsSample.WebApp.Controllers
 {
@@ -12,6 +14,23 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
     [RoutePrefix("api/events")]
     public class InputValueChangedEventController : ApiController
     {
+        private readonly IEventStoreService _service;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InputValueChangedEventController" /> class.
+        /// </summary>
+        /// <param name="service">The <see cref="EventStoreService "/> instance.
+        /// </param>
+        public InputValueChangedEventController(IEventStoreService service)
+        {
+            if (service == null)
+            {
+                throw new ArgumentNullException(nameof(service));
+            }
+
+            this._service = service;
+        }
+
         /// <summary>
         /// Sets the salutation value.
         /// </summary>
@@ -21,8 +40,8 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
         [Route("salutation-changed")]
         public virtual async Task<SalutationChangeResponse> SetSalutation([FromBody] SalutationChangeRequest request)
         {
-            var response = new SalutationChangeResponse();
-            return await Task.FromResult(response);
+            var response = await this._service.ChangeSalutationAsync(request);
+            return response;
         }
     }
 }

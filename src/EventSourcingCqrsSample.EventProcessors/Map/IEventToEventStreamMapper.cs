@@ -6,10 +6,10 @@ using EventSourcingCqrsSample.Repositories;
 namespace EventSourcingCqrsSample.EventProcessors.Map
 {
     /// <summary>
-    /// This provides interfaces to mappers inheriting the <see cref="EventToEventStreamMapper" /> class.
+    /// This provides interfaces to mappers inheriting the <see cref="BaseEventToEventStreamMapper{T}" /> class.
     /// </summary>
     /// <typeparam name="T">Type of event.</typeparam>
-    public interface IEventToEventStreamMapper<T> : IDisposable where T : BaseEvent
+    public interface IEventToEventStreamMapper<in T> : IDisposable where T : BaseEvent
     {
         /// <summary>
         /// Checks whether the event instance can be mapped to <see cref="EventStream" /> class.

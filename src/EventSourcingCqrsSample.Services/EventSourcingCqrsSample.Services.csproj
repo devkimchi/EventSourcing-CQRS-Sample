@@ -34,6 +34,10 @@
       <HintPath>..\packages\Aliencube.EntityContextLibrary.1.1.0.0\lib\net45\Aliencube.EntityContextLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -55,6 +59,9 @@
   <ItemGroup>
     <Compile Include="EventStoreService.cs" />
     <Compile Include="IEventStoreService.cs" />
+    <Compile Include="Map\BaseRequestToEventMapper.cs" />
+    <Compile Include="Map\IRequestToEventMapper.cs" />
+    <Compile Include="Map\SalutationChangeRequestToSalutationChangedEventMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +76,10 @@
     <ProjectReference Include="..\EventSourcingCqrsSample.Events\EventSourcingCqrsSample.Events.csproj">
       <Project>{b3531b0f-2bba-4748-b070-8a99d2f557ca}</Project>
       <Name>EventSourcingCqrsSample.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.Models\EventSourcingCqrsSample.Models.csproj">
+      <Project>{3218be2a-22d0-40a8-bae5-713068ddfc09}</Project>
+      <Name>EventSourcingCqrsSample.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\EventSourcingCqrsSample.Repositories\EventSourcingCqrsSample.Repositories.csproj">
       <Project>{828695ec-67ad-42aa-b7b9-4b1fd76f461f}</Project>

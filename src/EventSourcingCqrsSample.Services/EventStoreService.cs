@@ -7,6 +7,8 @@ using Aliencube.EntityContextLibrary.Interfaces;
 
 using EventSourcingCqrsSample.EventProcessors;
 using EventSourcingCqrsSample.Events;
+using EventSourcingCqrsSample.Models.Requests;
+using EventSourcingCqrsSample.Models.Responses;
 using EventSourcingCqrsSample.Repositories;
 
 namespace EventSourcingCqrsSample.Services
@@ -97,6 +99,31 @@ namespace EventSourcingCqrsSample.Services
             }
 
             return await Task.FromResult(results.TrueForAll(p => p));
+        }
+
+        /// <summary>
+        /// Changes salutation.
+        /// </summary>
+        /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
+        /// <returns>
+        /// Returns the <see cref="SalutationChangeResponse" /> instance.
+        /// </returns>
+        public SalutationChangeResponse ChangeSalutation(SalutationChangeRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Changes salutation asynchronously.
+        /// </summary>
+        /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
+        /// <returns>
+        /// Returns the <see cref="SalutationChangeResponse" /> instance.
+        /// </returns>
+        public async Task<SalutationChangeResponse> ChangeSalutationAsync(SalutationChangeRequest request)
+        {
+            var response = new SalutationChangeResponse();
+            return await Task.FromResult(response);
         }
 
         /// <summary>

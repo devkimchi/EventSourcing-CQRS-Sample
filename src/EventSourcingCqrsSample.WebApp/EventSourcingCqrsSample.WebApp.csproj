@@ -244,6 +244,10 @@
       <Project>{3218be2a-22d0-40a8-bae5-713068ddfc09}</Project>
       <Name>EventSourcingCqrsSample.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.Services\EventSourcingCqrsSample.Services.csproj">
+      <Project>{8de89cbb-5835-41d8-9183-00cb3296bfb9}</Project>
+      <Name>EventSourcingCqrsSample.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
