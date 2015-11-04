@@ -28,11 +28,11 @@ namespace EventSourcingCqrsSample.RequestHandlers
         }
 
         /// <summary>
-        /// Called while processing the request.
+        /// Called while creating the event from the request.
         /// </summary>
         /// <param name="request">Request instance.</param>
-        /// <returns>Returns the event.</returns>
-        protected override SalutationChangedEvent OnProcessing(BaseRequest request)
+        /// <returns>Returns the event created.</returns>
+        protected override SalutationChangedEvent OnCreatingEvent(BaseRequest request)
         {
             var @event = this._mapper.Map(request as SalutationChangeRequest);
             return @event;

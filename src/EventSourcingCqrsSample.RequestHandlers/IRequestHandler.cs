@@ -8,21 +8,20 @@ namespace EventSourcingCqrsSample.RequestHandlers
     /// <summary>
     /// This provides interfaces to the classes inheriting the <see cref="BaseRequestHandler{TRequest, TEvent}" /> class.
     /// </summary>
-    /// <typeparam name="TEvent">Type of event.</typeparam>
-    public interface IRequestHandler<out TEvent> : IDisposable where TEvent : BaseEvent
+    public interface IRequestHandler : IDisposable
     {
         /// <summary>
-        /// Checks whether the given request can be processed or not.
+        /// Checks whether the given request can be handled or not.
         /// </summary>
         /// <param name="request">Request instance.</param>
         /// <returns>Returns <c>True</c>, if the given request can be processed; otherwise returns <c>False</c>.</returns>
-        bool CanProcess(BaseRequest request);
+        bool CanHandle(BaseRequest request);
 
         /// <summary>
-        /// Processes the request.
+        /// Create the event from the request.
         /// </summary>
         /// <param name="request">Request instance.</param>
-        /// <returns>Returns the event.</returns>
-        TEvent Process(BaseRequest request);
+        /// <returns>Returns the event created.</returns>
+        BaseEvent CreateEvent(BaseRequest request);
     }
 }

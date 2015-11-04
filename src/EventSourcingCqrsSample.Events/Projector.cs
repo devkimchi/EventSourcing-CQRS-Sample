@@ -15,7 +15,7 @@ namespace EventSourcingCqrsSample.Events
         /// <param name="dateProjected">Date when the event has been projected.</param>
         public Projector(DateTime? dateProjected = null)
         {
-            this.DateProjected = dateProjected.GetValueOrDefault(DateTime.Now);
+            this.DateProjected = dateProjected.GetValueOrDefault(DateTime.UtcNow);
         }
 
         /// <summary>

@@ -8,30 +8,30 @@ namespace EventSourcingCqrsSample.RequestHandlers
     /// </summary>
     /// <typeparam name="TRequest">Type of request.</typeparam>
     /// <typeparam name="TEvent">Type of event.</typeparam>
-    public abstract class BaseRequestHandler<TRequest, TEvent> : IRequestHandler<TEvent>
+    public abstract class BaseRequestHandler<TRequest, TEvent> : IRequestHandler
         where TRequest : BaseRequest where TEvent : BaseEvent
     {
         private bool _disposed;
 
         /// <summary>
-        /// Checks whether the given request can be processed or not.
+        /// Checks whether the given request can be handled or not.
         /// </summary>
         /// <param name="request">Request instance.</param>
         /// <returns>Returns <c>True</c>, if the given request can be processed; otherwise returns <c>False</c>.</returns>
-        public virtual bool CanProcess(BaseRequest request)
+        public virtual bool CanHandle(BaseRequest request)
         {
             var req = request as TRequest;
             return req != null;
         }
 
         /// <summary>
-        /// Processes the request.
+        /// Create the event from the request.
         /// </summary>
         /// <param name="request">Request instance.</param>
-        /// <returns>Returns the event.</returns>
-        public TEvent Process(BaseRequest request)
+        /// <returns>Returns the event created.</returns>
+        public BaseEvent CreateEvent(BaseRequest request)
         {
-            return this.OnProcessing(request);
+            return this.OnCreatingEvent(request);
         }
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace EventSourcingCqrsSample.RequestHandlers
         }
 
         /// <summary>
-        /// Called while processing the request.
+        /// Called while creating the event from the request.
         /// </summary>
         /// <param name="request">Request instance.</param>
-        /// <returns>Returns the event.</returns>
-        protected abstract TEvent OnProcessing(BaseRequest request);
+        /// <returns>Returns the event created.</returns>
+        protected abstract TEvent OnCreatingEvent(BaseRequest request);
     }
 }

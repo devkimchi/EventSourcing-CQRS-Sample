@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EventSourcingCqrsSample.EventProcessors\EventSourcingCqrsSample.EventProcessors.csproj">
+      <Project>{358e8ec9-3b17-4b3c-baa3-f43d26e1fba3}</Project>
+      <Name>EventSourcingCqrsSample.EventProcessors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EventSourcingCqrsSample.Events\EventSourcingCqrsSample.Events.csproj">
       <Project>{b3531b0f-2bba-4748-b070-8a99d2f557ca}</Project>
       <Name>EventSourcingCqrsSample.Events</Name>
@@ -73,6 +77,10 @@
     <ProjectReference Include="..\EventSourcingCqrsSample.Repositories\EventSourcingCqrsSample.Repositories.csproj">
       <Project>{828695ec-67ad-42aa-b7b9-4b1fd76f461f}</Project>
       <Name>EventSourcingCqrsSample.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.RequestHandlers\EventSourcingCqrsSample.RequestHandlers.csproj">
+      <Project>{80c89552-a53c-42c7-b3a5-db36c73942f8}</Project>
+      <Name>EventSourcingCqrsSample.RequestHandlers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

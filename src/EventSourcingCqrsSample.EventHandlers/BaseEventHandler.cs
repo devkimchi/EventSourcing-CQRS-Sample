@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using EventSourcingCqrsSample.Events;
 
@@ -30,6 +31,7 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
         public bool Process(BaseEvent ev)
         {
+            ev.DateRecorded = DateTime.UtcNow;
             return this.OnProcessing(ev);
         }
 
@@ -40,6 +42,7 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
         public async Task<bool> ProcessAsync(BaseEvent ev)
         {
+            ev.DateRecorded = DateTime.UtcNow;
             return await this.OnProcessingAsync(ev);
         }
 
