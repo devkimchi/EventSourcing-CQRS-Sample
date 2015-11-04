@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EventSourcingCqrsSample.EventProcessors")]
+[assembly: AssemblyTitle("EventSourcingCqrsSample.EventHandlers")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EventSourcingCqrsSample.EventProcessors")]
+[assembly: AssemblyProduct("EventSourcingCqrsSample.EventHandlers")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("358e8ec9-3b17-4b3c-baa3-f43d26e1fba3")]
+[assembly: Guid("bad1320e-28f7-4bca-b388-17862755e147")]
 
 // Version information for an assembly consists of the following four values:
 //

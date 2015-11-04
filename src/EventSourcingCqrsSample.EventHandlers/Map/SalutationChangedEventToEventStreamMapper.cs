@@ -5,7 +5,7 @@ using EventSourcingCqrsSample.Repositories;
 
 using Newtonsoft.Json;
 
-namespace EventSourcingCqrsSample.EventProcessors.Map
+namespace EventSourcingCqrsSample.EventHandlers.Map
 {
     /// <summary>
     /// This represents the mapper entity for <see cref="SalutationChangedEvent" /> to <see cref="EventStream" />.

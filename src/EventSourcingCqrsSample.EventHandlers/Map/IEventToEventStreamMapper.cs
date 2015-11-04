@@ -3,7 +3,7 @@
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Repositories;
 
-namespace EventSourcingCqrsSample.EventProcessors.Map
+namespace EventSourcingCqrsSample.EventHandlers.Map
 {
     /// <summary>
     /// This provides interfaces to mappers inheriting the <see cref="BaseEventToEventStreamMapper{T}" /> class.

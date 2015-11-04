@@ -3,26 +3,26 @@ using System.Threading.Tasks;
 
 using Aliencube.EntityContextLibrary.Interfaces;
 
-using EventSourcingCqrsSample.EventProcessors.Map;
+using EventSourcingCqrsSample.EventHandlers.Map;
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Repositories;
 
-namespace EventSourcingCqrsSample.EventProcessors
+namespace EventSourcingCqrsSample.EventHandlers
 {
     /// <summary>
-    /// This represents the processor entity for the <see cref="GivenNameChangedEvent" /> class.
+    /// This represents the processor entity for the <see cref="DefaultEvent" /> class.
     /// </summary>
-    public class GivenNameChangedEventProcessor : BaseEventProcessor<GivenNameChangedEvent>
+    public class DefaultEventHandler : BaseEventHandler<DefaultEvent>
     {
-        private readonly IEventToEventStreamMapper<GivenNameChangedEvent> _mapper;
+        private readonly IEventToEventStreamMapper<DefaultEvent> _mapper;
         private readonly IBaseRepository<EventStream> _repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GivenNameChangedEventProcessor" /> class.
+        /// Initializes a new instance of the <see cref="DefaultEventHandler" /> class.
         /// </summary>
         /// <param name="mapper">event stream mapper instance.</param>
         /// <param name="repository">event stream repository instance.</param>
-        public GivenNameChangedEventProcessor(IEventToEventStreamMapper<GivenNameChangedEvent> mapper, IBaseRepository<EventStream> repository)
+        public DefaultEventHandler(IEventToEventStreamMapper<DefaultEvent> mapper, IBaseRepository<EventStream> repository)
         {
             if (mapper == null)
             {
@@ -37,6 +37,16 @@ namespace EventSourcingCqrsSample.EventProcessors
             }
 
             this._repository = repository;
+        }
+
+        /// <summary>
+        /// Checks whether the given event can be processed or not.
+        /// </summary>
+        /// <param name="ev">Event instance.</param>
+        /// <returns>Returns <c>True</c>, if the given event can be processed; otherwise returns <c>False</c>.</returns>
+        public override bool CanProcess(BaseEvent ev)
+        {
+            return true;
         }
 
         /// <summary>
@@ -56,7 +66,7 @@ namespace EventSourcingCqrsSample.EventProcessors
         /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
         protected override async Task<bool> OnProcessingAsync(BaseEvent ev)
         {
-            var stream = this._mapper.Map(ev as GivenNameChangedEvent);
+            var stream = this._mapper.Map(ev as DefaultEvent);
 
             this._repository.AddAsync(stream);
             return await Task.FromResult(true);

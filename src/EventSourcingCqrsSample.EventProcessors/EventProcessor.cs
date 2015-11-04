@@ -2,43 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Aliencube.EntityContextLibrary;
 using Aliencube.EntityContextLibrary.Interfaces;
 
-using EventSourcingCqrsSample.EventProcessors;
+using EventSourcingCqrsSample.EventHandlers;
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Models.Requests;
 using EventSourcingCqrsSample.Models.Responses;
 using EventSourcingCqrsSample.Repositories;
 
-namespace EventSourcingCqrsSample.Services
+namespace EventSourcingCqrsSample.EventProcessors
 {
     /// <summary>
-    /// This represents the service entity for event store.
+    /// This represents the processor entity for events.
     /// </summary>
-    public class EventStoreService : IEventStoreService
+    public class EventProcessor : IEventProcessor
     {
         private readonly IUnitOfWorkManager _uowm;
-        private readonly IEnumerable<IEventProcessor> _processors;
+        private readonly IEnumerable<IEventHandler> _handlers;
 
         private bool _disposed;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventStoreService" /> class.
+        /// Initializes a new instance of the <see cref="EventProcessor" /> class.
         /// </summary>
         /// <param name="uowm"><see cref="UnitOfWorkManager" /> instance.</param>
-        /// <param name="processors">List of event processors.</param>
-        public EventStoreService(IUnitOfWorkManager uowm, params IEventProcessor[] processors)
-            : this(uowm, processors.ToList())
+        /// <param name="handlers">List of event handlers.</param>
+        public EventProcessor(IUnitOfWorkManager uowm, params IEventHandler[] handlers)
+            : this(uowm, handlers.ToList())
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventStoreService" /> class.
+        /// Initializes a new instance of the <see cref="EventProcessor" /> class.
         /// </summary>
         /// <param name="uowm"><see cref="UnitOfWorkManager" /> instance.</param>
-        /// <param name="processors">List of event processors.</param>
-        public EventStoreService(IUnitOfWorkManager uowm, IEnumerable<IEventProcessor> processors)
+        /// <param name="handlers">List of event handlers.</param>
+        public EventProcessor(IUnitOfWorkManager uowm, IEnumerable<IEventHandler> handlers)
         {
             if (uowm == null)
             {
@@ -47,12 +48,12 @@ namespace EventSourcingCqrsSample.Services
 
             this._uowm = uowm;
 
-            if (processors == null)
+            if (handlers == null)
             {
-                throw new ArgumentNullException(nameof(processors));
+                throw new ArgumentNullException(nameof(handlers));
             }
 
-            this._processors = processors;
+            this._handlers = handlers;
         }
 
         /// <summary>
@@ -81,10 +82,10 @@ namespace EventSourcingCqrsSample.Services
                 {
                     foreach (var ev in evs)
                     {
-                        var processors = this.GetProcessors(ev);
-                        foreach (var processor in processors)
+                        var handlers = this.GetHandlers(ev);
+                        foreach (var handler in handlers)
                         {
-                            var result = await processor.ProcessAsync(ev);
+                            var result = await handler.ProcessAsync(ev);
                             results.Add(result);
                         }
                     }
@@ -139,9 +140,9 @@ namespace EventSourcingCqrsSample.Services
             this._disposed = true;
         }
 
-        private IEnumerable<IEventProcessor> GetProcessors(BaseEvent ev)
+        private IEnumerable<IEventHandler> GetHandlers(BaseEvent ev)
         {
-            var processors = this._processors.Where(p => p.CanProcess(ev));
+            var processors = this._handlers.Where(p => p.CanProcess(ev));
             return processors;
         }
     }

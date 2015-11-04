@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Events", "EventSourcingCqrsSample.Events\EventSourcingCqrsSample.Events.csproj", "{B3531B0F-2BBA-4748-B070-8A99D2F557CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.EventProcessors", "EventSourcingCqrsSample.EventProcessors\EventSourcingCqrsSample.EventProcessors.csproj", "{BAD1320E-28F7-4BCA-B388-17862755E147}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1FDA3FE9-D207-4E5A-9E7A-577412733810}"
 	ProjectSection(SolutionItems) = preProject
 		EventSourcingCqrsSample.sln.DotSettings = EventSourcingCqrsSample.sln.DotSettings
@@ -20,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.WebApp", "EventSourcingCqrsSample.WebApp\EventSourcingCqrsSample.WebApp.csproj", "{4346967B-9B9B-4CA0-9944-90AA1A6E238D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Models", "EventSourcingCqrsSample.Models\EventSourcingCqrsSample.Models.csproj", "{3218BE2A-22D0-40A8-BAE5-713068DDFC09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.EventHandlers", "EventSourcingCqrsSample.EventHandlers\EventSourcingCqrsSample.EventHandlers.csproj", "{BAD1320E-28F7-4BCA-B388-17862755E147}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.EventProcessors", "EventSourcingCqrsSample.EventProcessors\EventSourcingCqrsSample.EventProcessors.csproj", "{358E8EC9-3B17-4B3C-BAA3-F43D26E1FBA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +41,6 @@ Global
 		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3531B0F-2BBA-4748-B070-8A99D2F557CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4346967B-9B9B-4CA0-9944-90AA1A6E238D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +49,14 @@ Global
 		{3218BE2A-22D0-40A8-BAE5-713068DDFC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3218BE2A-22D0-40A8-BAE5-713068DDFC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3218BE2A-22D0-40A8-BAE5-713068DDFC09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD1320E-28F7-4BCA-B388-17862755E147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{358E8EC9-3B17-4B3C-BAA3-F43D26E1FBA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358E8EC9-3B17-4B3C-BAA3-F43D26E1FBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358E8EC9-3B17-4B3C-BAA3-F43D26E1FBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358E8EC9-3B17-4B3C-BAA3-F43D26E1FBA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

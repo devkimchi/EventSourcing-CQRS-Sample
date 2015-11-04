@@ -3,7 +3,7 @@ using AutoMapper;
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Repositories;
 
-namespace EventSourcingCqrsSample.EventProcessors.Map
+namespace EventSourcingCqrsSample.EventHandlers.Map
 {
     /// <summary>
     /// This represents the mapper entity for event inheriting <see cref="BaseEvent" /> to <see cref="EventStream" />. This must be inherited.

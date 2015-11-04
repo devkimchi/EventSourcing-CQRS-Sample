@@ -2,13 +2,13 @@
 
 using EventSourcingCqrsSample.Events;
 
-namespace EventSourcingCqrsSample.EventProcessors
+namespace EventSourcingCqrsSample.EventHandlers
 {
     /// <summary>
     /// This represents the base event processor entity. This must be inherited.
     /// </summary>
     /// <typeparam name="T">Type of event.</typeparam>
-    public abstract class BaseEventProcessor<T> : IEventProcessor where T : BaseEvent
+    public abstract class BaseEventHandler<T> : IEventHandler where T : BaseEvent
     {
         private bool _disposed;
 
