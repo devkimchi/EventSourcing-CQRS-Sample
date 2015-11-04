@@ -26,23 +26,5 @@ namespace EventSourcingCqrsSample.EventProcessors
         /// <param name="evs">List of events.</param>
         /// <returns>Returns <c>True</c>, if all events have been consumed; otherwise returns <c>False.</c></returns>
         Task<bool> ProcessEventsAsync(IEnumerable<BaseEvent> evs);
-
-        /// <summary>
-        /// Changes salutation.
-        /// </summary>
-        /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
-        /// <returns>
-        /// Returns the <see cref="SalutationChangeResponse" /> instance.
-        /// </returns>
-        SalutationChangeResponse ChangeSalutation(SalutationChangeRequest request);
-
-        /// <summary>
-        /// Changes salutation asynchronously.
-        /// </summary>
-        /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
-        /// <returns>
-        /// Returns the <see cref="SalutationChangeResponse" /> instance.
-        /// </returns>
-        Task<SalutationChangeResponse> ChangeSalutationAsync(SalutationChangeRequest request);
     }
 }

@@ -14,14 +14,14 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
     [RoutePrefix("api/events")]
     public class InputValueChangedEventController : ApiController
     {
-        private readonly IEventStoreService _service;
+        private readonly IEventStreamService _service;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputValueChangedEventController" /> class.
         /// </summary>
-        /// <param name="service">The <see cref="EventStoreService "/> instance.
+        /// <param name="service">The <see cref="EventStreamService "/> instance.
         /// </param>
-        public InputValueChangedEventController(IEventStoreService service)
+        public InputValueChangedEventController(IEventStreamService service)
         {
             if (service == null)
             {
