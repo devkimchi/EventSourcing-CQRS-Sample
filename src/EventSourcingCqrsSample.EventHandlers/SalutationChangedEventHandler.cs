@@ -20,8 +20,8 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <summary>
         /// Initializes a new instance of the <see cref="SalutationChangedEventHandler" /> class.
         /// </summary>
-        /// <param name="mapper">event stream mapper instance.</param>
-        /// <param name="repository">event stream repository instance.</param>
+        /// <param name="mapper">The event stream mapper instance.</param>
+        /// <param name="repository">The event stream repository instance.</param>
         public SalutationChangedEventHandler(IEventToEventStreamMapper<SalutationChangedEvent> mapper, IBaseRepository<EventStream> repository)
         {
             if (mapper == null)

@@ -6,7 +6,7 @@ using EventSourcingCqrsSample.Events;
 namespace EventSourcingCqrsSample.EventHandlers
 {
     /// <summary>
-    /// This provides interfaces to the classes inheriting the <see cref="BaseEventProcessor{T}" /> class.
+    /// This provides interfaces to the classes inheriting the <see cref="BaseEventHandler{T}" /> class.
     /// </summary>
     public interface IEventHandler : IDisposable
     {

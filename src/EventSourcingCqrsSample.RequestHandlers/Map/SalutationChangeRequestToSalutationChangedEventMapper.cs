@@ -3,7 +3,7 @@
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Models.Requests;
 
-namespace EventSourcingCqrsSample.Services.Map
+namespace EventSourcingCqrsSample.RequestHandlers.Map
 {
     /// <summary>
     /// This represents the mapper entity for <see cref="SalutationChangeRequest" /> to <see cref="SalutationChangedEvent" />.

@@ -3,7 +3,7 @@
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Models.Requests;
 
-namespace EventSourcingCqrsSample.Services.Map
+namespace EventSourcingCqrsSample.RequestHandlers.Map
 {
     /// <summary>
     /// This provides interfaces to mappers inheriting the <see cref="BaseRequestToEventMapper{TRequest, TEvent}" /> class.
