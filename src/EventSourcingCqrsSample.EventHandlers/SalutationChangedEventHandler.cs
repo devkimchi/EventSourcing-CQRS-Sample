@@ -48,7 +48,7 @@ namespace EventSourcingCqrsSample.EventHandlers
         {
             var stream = this._mapper.Map(ev as SalutationChangedEvent);
 
-            this._repository.AddAsync(stream);
+            this._repository.Add(stream);
             return await Task.FromResult(true);
         }
     }

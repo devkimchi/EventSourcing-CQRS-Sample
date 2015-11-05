@@ -40,16 +40,6 @@ namespace EventSourcingCqrsSample.EventHandlers
         }
 
         /// <summary>
-        /// Checks whether the given event can be processed or not.
-        /// </summary>
-        /// <param name="ev">Event instance.</param>
-        /// <returns>Returns <c>True</c>, if the given event can be processed; otherwise returns <c>False</c>.</returns>
-        public override bool CanProcess(BaseEvent ev)
-        {
-            return true;
-        }
-
-        /// <summary>
         /// Called while processing the event asynchronously.
         /// </summary>
         /// <param name="ev">Event instance.</param>

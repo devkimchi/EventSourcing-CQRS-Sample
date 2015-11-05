@@ -24,6 +24,7 @@ module app.angular.Models {
         id: string;
         name: string;
         value: string;
+        streamId: string;
     }
 
     export class SalutationChangeResponseModel {

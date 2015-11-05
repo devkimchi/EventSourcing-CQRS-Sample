@@ -74,6 +74,7 @@ namespace EventSourcingCqrsSample.EventProcessors
                 {
                     uow.Rollback();
                     results.Add(false);
+                    throw;
                 }
             }
 
@@ -95,8 +96,8 @@ namespace EventSourcingCqrsSample.EventProcessors
 
         private IEnumerable<IEventHandler> GetHandlers(BaseEvent ev)
         {
-            var processors = this._handlers.Where(p => p.CanProcess(ev));
-            return processors;
+            var handlers = this._handlers.Where(p => p.CanProcess(ev));
+            return handlers;
         }
     }
 }

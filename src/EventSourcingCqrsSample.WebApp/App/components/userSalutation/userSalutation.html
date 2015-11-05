@@ -1,11 +1,10 @@
 ﻿<div class="form-group">
-    <label for="{{model.id}}">Title</label>
+    <label for="salutation">Title</label>
     <select class="form-control"
-            id="{{model.id}}"
-            name="{{model.name}}"
+            id="salutation"
+            name="salutation"
             ng-model="model.value"
-            ng-options="salutation.value as salutation.text for salutation in model.salutations"
-            ng-change="change($event)">
+            ng-options="salutation.value as salutation.text for salutation in model.salutations">
         <option value="">Select</option>
     </select>
 </div>

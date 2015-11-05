@@ -78,7 +78,8 @@ namespace EventSourcingCqrsSample.Services
                                {
                                    Error = new ResponseError()
                                                {
-                                                   Message = ex.Message
+                                                   Message = ex.Message,
+                                                   StackTrace = ex.StackTrace,
                                                }
                                };
             }
@@ -120,7 +121,8 @@ namespace EventSourcingCqrsSample.Services
                                {
                                    Error = new ResponseError()
                                                {
-                                                   Message = ex.Message
+                                                    Message = ex.Message,
+                                                    StackTrace = ex.StackTrace,
                                                }
                                };
             }
