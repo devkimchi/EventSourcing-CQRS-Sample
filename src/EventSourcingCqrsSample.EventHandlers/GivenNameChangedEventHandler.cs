@@ -40,16 +40,6 @@ namespace EventSourcingCqrsSample.EventHandlers
         }
 
         /// <summary>
-        /// Called while processing the event.
-        /// </summary>
-        /// <param name="ev">Event instance.</param>
-        /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
-        protected override bool OnProcessing(BaseEvent ev)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Called while processing the event asynchronously.
         /// </summary>
         /// <param name="ev">Event instance.</param>

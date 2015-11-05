@@ -18,13 +18,6 @@ namespace EventSourcingCqrsSample.EventHandlers
         bool CanProcess(BaseEvent ev);
 
         /// <summary>
-        /// Processes the event.
-        /// </summary>
-        /// <param name="ev">Event instance.</param>
-        /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
-        bool Process(BaseEvent ev);
-
-        /// <summary>
         /// Processes the event asynchronously.
         /// </summary>
         /// <param name="ev">Event instance.</param>

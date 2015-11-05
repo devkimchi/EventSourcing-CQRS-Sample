@@ -32,6 +32,19 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
         }
 
         /// <summary>
+        /// Gets the event stream.
+        /// </summary>
+        /// <returns>Returns the <see cref="EventStreamCreateResponse" /> instance.
+        /// </returns>
+        [Route("stream")]
+        public virtual async Task<EventStreamCreateResponse> GetEventStream()
+        {
+            var request = new EventStreamCreateRequest() { StreamId = Guid.NewGuid() };
+            var response = await this._service.CreateEventStreamAsync(request);
+            return response;
+        }
+
+        /// <summary>
         /// Sets the salutation value.
         /// </summary>
         /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>

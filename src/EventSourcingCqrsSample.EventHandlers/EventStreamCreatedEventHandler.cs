@@ -10,19 +10,19 @@ using EventSourcingCqrsSample.Repositories;
 namespace EventSourcingCqrsSample.EventHandlers
 {
     /// <summary>
-    /// This represents the processor entity for the <see cref="DefaultEvent" /> class.
+    /// This represents the processor entity for the <see cref="EventStreamCreatedEvent" /> class.
     /// </summary>
-    public class DefaultEventHandler : BaseEventHandler<DefaultEvent>
+    public class EventStreamCreatedEventHandler : BaseEventHandler<EventStreamCreatedEvent>
     {
-        private readonly IEventToEventStreamMapper<DefaultEvent> _mapper;
+        private readonly IEventToEventStreamMapper<EventStreamCreatedEvent> _mapper;
         private readonly IBaseRepository<EventStream> _repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultEventHandler" /> class.
+        /// Initializes a new instance of the <see cref="EventStreamCreatedEventHandler" /> class.
         /// </summary>
         /// <param name="mapper">event stream mapper instance.</param>
         /// <param name="repository">event stream repository instance.</param>
-        public DefaultEventHandler(IEventToEventStreamMapper<DefaultEvent> mapper, IBaseRepository<EventStream> repository)
+        public EventStreamCreatedEventHandler(IEventToEventStreamMapper<EventStreamCreatedEvent> mapper, IBaseRepository<EventStream> repository)
         {
             if (mapper == null)
             {
@@ -50,25 +50,15 @@ namespace EventSourcingCqrsSample.EventHandlers
         }
 
         /// <summary>
-        /// Called while processing the event.
-        /// </summary>
-        /// <param name="ev">Event instance.</param>
-        /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
-        protected override bool OnProcessing(BaseEvent ev)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Called while processing the event asynchronously.
         /// </summary>
         /// <param name="ev">Event instance.</param>
         /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
         protected override async Task<bool> OnProcessingAsync(BaseEvent ev)
         {
-            var stream = this._mapper.Map(ev as DefaultEvent);
+            var stream = this._mapper.Map(ev as EventStreamCreatedEvent);
 
-            this._repository.AddAsync(stream);
+            this._repository.Add(stream);
             return await Task.FromResult(true);
         }
     }

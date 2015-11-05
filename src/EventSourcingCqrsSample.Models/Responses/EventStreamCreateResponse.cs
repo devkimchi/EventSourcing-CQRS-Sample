@@ -3,9 +3,9 @@
 namespace EventSourcingCqrsSample.Models.Responses
 {
     /// <summary>
-    /// This represents the response entity for the salutation changed event.
+    /// This represents the response entity for event stream created event.
     /// </summary>
-    public class SalutationChangeResponse : BaseResponse<SalutationResponseData>
+    public class EventStreamCreateResponse : BaseResponse<EventStreamResponseData>
     {
     }
 }

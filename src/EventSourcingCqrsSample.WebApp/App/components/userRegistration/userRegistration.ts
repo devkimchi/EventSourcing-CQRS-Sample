@@ -1,14 +1,14 @@
 ﻿/// <reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
-/// <reference path="../../models/registrationModel.ts" />
-/// <reference path="../../factories/salutationsFactory.ts" />
+/// <reference path="../../models/eventStreamModel.ts" />
+/// <reference path="../../factories/eventStreamFactory.ts" />
 
 "use strict";
 
 module app.angular.Directives {
-    import RegistrationModel = angular.Models.RegistrationModel;
+    import EventStreamDataModel = angular.Models.EventStreamDataModel;
 
     export interface IMainContentScope extends ng.IScope {
-        model: angular.Models.RegistrationModel;
+        model: angular.Models.EventStreamDataModel;
     }
 
     export class UserRegistration implements ng.IDirective {
@@ -17,12 +17,12 @@ module app.angular.Directives {
         scope = {};
         templateUrl = "/App/components/userRegistration/userRegistration.html";
 
-        controller($scope: IMainContentScope, salutationsFactory: angular.Factories.SalutationsFactory) {
-            $scope.model = new RegistrationModel();
+        controller($scope: IMainContentScope, eventStreamFactory: angular.Factories.EventStreamFactory) {
+            $scope.model = new EventStreamDataModel();
 
-            salutationsFactory.getResponse()
-                .success((salutations: Array<angular.Models.Salutation>) => {
-                    $scope.model.salutations = salutations;
+            eventStreamFactory.getResponse()
+                .success((eventStream: angular.Models.EventStreamResponseModel) => {
+                    $scope.model.streamId = eventStream.data.streamId;
                     console.log($scope.model);
                 });
         }

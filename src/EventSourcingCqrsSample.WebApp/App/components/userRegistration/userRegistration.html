@@ -1,20 +1,9 @@
-﻿<div>
-    <div class="form-group">
-        <label for="salutation">Title</label>
-        <select class="form-control" id="salutation" name="salutation">
-            <option ng-repeat="salutation in model.salutations" value="{{salutation.value}}">{{salutation.text}}</option>
-        </select>
-    </div>
+﻿<div id="user-registration" data-stream-id="{{model.streamId}}">
+    <div user-salutation></div>
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" />
-    </div>
+    <div user-name></div>
 
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
-    </div>
+    <div user-email></div>
 
     <input type="submit" class="btn btn-default" id="submit" name="submit" />
 </div>

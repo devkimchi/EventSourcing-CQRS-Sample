@@ -4,6 +4,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 using Owin;
@@ -46,6 +47,8 @@ namespace EventSourcingCqrsSample.WebApp
 
             // Formatters
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            config.Formatters.JsonFormatter.SerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
 
             builder.UseWebApi(config);
         }

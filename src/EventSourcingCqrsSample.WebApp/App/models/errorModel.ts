@@ -3,7 +3,7 @@
 "use strict";
 
 module app.angular.Models {
-    export class RegistrationModel {
-        streamId: string;
+    export class ErrorModel {
+        message: string;
     }
 }

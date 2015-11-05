@@ -48,8 +48,10 @@
     <Compile Include="IRequestHandler.cs" />
     <Compile Include="Map\BaseRequestToEventMapper.cs" />
     <Compile Include="Map\IRequestToEventMapper.cs" />
+    <Compile Include="Map\EventStreamCreateRequestToEventStreamCreatedEventMapper.cs" />
     <Compile Include="Map\SalutationChangeRequestToSalutationChangedEventMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EventStreamCreateRequestHandler.cs" />
     <Compile Include="SalutationChangeRequestHandler.cs" />
   </ItemGroup>
   <ItemGroup>

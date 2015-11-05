@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEvent.cs" />
-    <Compile Include="DefaultEvent.cs" />
+    <Compile Include="EventStreamCreatedEvent.cs" />
     <Compile Include="EmailChangedEvent.cs" />
     <Compile Include="GivenNameChangedEvent.cs" />
     <Compile Include="InputValueChangedEvent.cs" />

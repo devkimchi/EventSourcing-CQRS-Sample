@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 namespace EventSourcingCqrsSample.EventHandlers.Map
 {
     /// <summary>
-    /// This represents the mapper entity for <see cref="DefaultEvent" /> to <see cref="EventStream" />.
+    /// This represents the mapper entity for <see cref="EventStreamCreatedEvent" /> to <see cref="EventStream" />.
     /// </summary>
-    public class DefaultEventToEventStreamMapper : BaseEventToEventStreamMapper<DefaultEvent>
+    public class EventStreamCreatedEventToEventStreamMapper : BaseEventToEventStreamMapper<EventStreamCreatedEvent>
     {
         /// <summary>
         /// Initialises the mapping definition.
@@ -22,7 +22,7 @@ namespace EventSourcingCqrsSample.EventHandlers.Map
                 return;
             }
 
-            Mapper.CreateMap<DefaultEvent, EventStream>()
+            Mapper.CreateMap<EventStreamCreatedEvent, EventStream>()
                 .ForMember(es => es.StreamId, o => o.MapFrom(ev => ev.EventStream))
                 .ForMember(es => es.EventName, o => o.MapFrom(ev => ev.Name))
                 .ForMember(es => es.EventType, o => o.MapFrom(ev => ev.GetType().FullName))

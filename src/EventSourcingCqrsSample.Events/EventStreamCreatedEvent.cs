@@ -1,9 +1,9 @@
 ﻿namespace EventSourcingCqrsSample.Events
 {
     /// <summary>
-    /// This represents the event entity for default.
+    /// This represents the event entity when event stream is created.
     /// </summary>
-    public class DefaultEvent : BaseEvent
+    public class EventStreamCreatedEvent : BaseEvent
     {
         /// <summary>
         /// Gets the name of the event.

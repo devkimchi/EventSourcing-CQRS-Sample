@@ -7,6 +7,7 @@ using EventSourcingCqrsSample.EventProcessors;
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Models.Requests;
 using EventSourcingCqrsSample.Models.Responses;
+using EventSourcingCqrsSample.Models.Responses.Data;
 using EventSourcingCqrsSample.RequestHandlers;
 
 namespace EventSourcingCqrsSample.Services
@@ -27,16 +28,6 @@ namespace EventSourcingCqrsSample.Services
         /// <param name="processor">The event processor instance.</param>
         /// <param name="handlers">The list of request handlers.</param>
         public EventStreamService(IEventProcessor processor, params IRequestHandler[] handlers)
-            : this(processor, handlers.ToList())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EventStreamService" /> class.
-        /// </summary>
-        /// <param name="processor">The event processor instance.</param>
-        /// <param name="handlers">The list of request handlers.</param>
-        public EventStreamService(IEventProcessor processor, IEnumerable<IRequestHandler> handlers)
         {
             if (processor == null)
             {
@@ -54,24 +45,52 @@ namespace EventSourcingCqrsSample.Services
         }
 
         /// <summary>
-        /// Changes salutation.
+        /// Creates a new event stream asynchronously.
         /// </summary>
-        /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
-        /// <returns>
-        /// Returns the <see cref="SalutationChangeResponse" /> instance.
-        /// </returns>
-        public SalutationChangeResponse ChangeSalutation(SalutationChangeRequest request)
+        /// <param name="request">The <see cref="EventStreamCreateRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="EventStreamCreateResponse" /> instance.</returns>
+        public async Task<EventStreamCreateResponse> CreateEventStreamAsync(EventStreamCreateRequest request)
         {
-            throw new NotImplementedException();
+            var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
+            if (handler == null)
+            {
+                return await Task.FromResult(default(EventStreamCreateResponse));
+            }
+
+            var ev = handler.CreateEvent(request) as EventStreamCreatedEvent;
+            PopulateBaseProperties(ev);
+
+            EventStreamCreateResponse response;
+            try
+            {
+                await this._processor.ProcessEventsAsync(new[] { ev });
+                response = new EventStreamCreateResponse()
+                               {
+                                   Data = new EventStreamResponseData()
+                                              {
+                                                  StreamId = request.StreamId
+                                              }
+                               };
+            }
+            catch (Exception ex)
+            {
+                response = new EventStreamCreateResponse()
+                               {
+                                   Error = new ResponseError()
+                                               {
+                                                   Message = ex.Message
+                                               }
+                               };
+            }
+
+            return await Task.FromResult(response);
         }
 
         /// <summary>
         /// Changes salutation asynchronously.
         /// </summary>
         /// <param name="request">The <see cref="SalutationChangeRequest" /> instance.</param>
-        /// <returns>
-        /// Returns the <see cref="SalutationChangeResponse" /> instance.
-        /// </returns>
+        /// <returns>Returns the <see cref="SalutationChangeResponse" /> instance.</returns>
         public async Task<SalutationChangeResponse> ChangeSalutationAsync(SalutationChangeRequest request)
         {
             var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
@@ -81,10 +100,31 @@ namespace EventSourcingCqrsSample.Services
             }
 
             var ev = handler.CreateEvent(request) as SalutationChangedEvent;
-            this.PopulateBaseProperties(ev);
+            PopulateBaseProperties(ev);
 
-            var processed = await this._processor.ProcessEventsAsync(new[] { ev });
-            var response = new SalutationChangeResponse();
+            SalutationChangeResponse response;
+            try
+            {
+                await this._processor.ProcessEventsAsync(new[] { ev });
+                response = new SalutationChangeResponse()
+                               {
+                                   Data = new SalutationResponseData()
+                                              {
+                                                  Salutation = request.Value
+                                              }
+                               };
+            }
+            catch (Exception ex)
+            {
+                response = new SalutationChangeResponse()
+                               {
+                                   Error = new ResponseError()
+                                               {
+                                                   Message = ex.Message
+                                               }
+                               };
+            }
+
             return await Task.FromResult(response);
         }
 
@@ -101,7 +141,7 @@ namespace EventSourcingCqrsSample.Services
             this._disposed = true;
         }
 
-        private void PopulateBaseProperties<T>(T ev) where T : BaseEvent
+        private static void PopulateBaseProperties<T>(T ev) where T : BaseEvent
         {
             ev.EventId = Guid.NewGuid();
             ev.Sequence = DateTime.UtcNow.Ticks;

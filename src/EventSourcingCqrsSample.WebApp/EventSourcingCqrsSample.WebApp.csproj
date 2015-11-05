@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aliencube.EntityContextLibrary, Version=1.1.0.42634, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aliencube.EntityContextLibrary.1.1.0.0\lib\net45\Aliencube.EntityContextLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
@@ -59,6 +63,14 @@
     </Reference>
     <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -156,7 +168,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\components\userEmail\userEmail.html" />
+    <Content Include="App\components\userName\userName.html" />
     <Content Include="App\components\userRegistration\userRegistration.html" />
+    <Content Include="App\components\userSalutation\userSalutation.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -225,7 +240,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\App.ts" />
     <TypeScriptCompile Include="App\components\userRegistration\userRegistration.ts" />
+    <TypeScriptCompile Include="App\components\userSalutation\userSalutation.ts" />
+    <TypeScriptCompile Include="App\factories\eventStreamFactory.ts" />
     <TypeScriptCompile Include="App\factories\salutationsFactory.ts" />
+    <TypeScriptCompile Include="App\models\errorModel.ts" />
+    <TypeScriptCompile Include="App\models\eventStreamModel.ts" />
+    <TypeScriptCompile Include="App\models\salutationModel.ts" />
     <TypeScriptCompile Include="App\models\registrationModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
@@ -240,9 +260,25 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EventSourcingCqrsSample.EventHandlers\EventSourcingCqrsSample.EventHandlers.csproj">
+      <Project>{bad1320e-28f7-4bca-b388-17862755e147}</Project>
+      <Name>EventSourcingCqrsSample.EventHandlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.EventProcessors\EventSourcingCqrsSample.EventProcessors.csproj">
+      <Project>{358e8ec9-3b17-4b3c-baa3-f43d26e1fba3}</Project>
+      <Name>EventSourcingCqrsSample.EventProcessors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EventSourcingCqrsSample.Models\EventSourcingCqrsSample.Models.csproj">
       <Project>{3218be2a-22d0-40a8-bae5-713068ddfc09}</Project>
       <Name>EventSourcingCqrsSample.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.Repositories\EventSourcingCqrsSample.Repositories.csproj">
+      <Project>{828695ec-67ad-42aa-b7b9-4b1fd76f461f}</Project>
+      <Name>EventSourcingCqrsSample.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.RequestHandlers\EventSourcingCqrsSample.RequestHandlers.csproj">
+      <Project>{80c89552-a53c-42c7-b3a5-db36c73942f8}</Project>
+      <Name>EventSourcingCqrsSample.RequestHandlers</Name>
     </ProjectReference>
     <ProjectReference Include="..\EventSourcingCqrsSample.Services\EventSourcingCqrsSample.Services.csproj">
       <Project>{8de89cbb-5835-41d8-9183-00cb3296bfb9}</Project>

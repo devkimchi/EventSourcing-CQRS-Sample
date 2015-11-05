@@ -25,17 +25,6 @@ namespace EventSourcingCqrsSample.EventHandlers
         }
 
         /// <summary>
-        /// Processes the event.
-        /// </summary>
-        /// <param name="ev">Event instance.</param>
-        /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
-        public bool Process(BaseEvent ev)
-        {
-            ev.DateRecorded = DateTime.UtcNow;
-            return this.OnProcessing(ev);
-        }
-
-        /// <summary>
         /// Processes the event asynchronously.
         /// </summary>
         /// <param name="ev">Event instance.</param>
@@ -58,13 +47,6 @@ namespace EventSourcingCqrsSample.EventHandlers
 
             this._disposed = true;
         }
-
-        /// <summary>
-        /// Called while processing the event.
-        /// </summary>
-        /// <param name="ev">Event instance.</param>
-        /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
-        protected abstract bool OnProcessing(BaseEvent ev);
 
         /// <summary>
         /// Called while processing the event asynchronously.

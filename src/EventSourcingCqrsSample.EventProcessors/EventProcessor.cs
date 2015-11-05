@@ -8,8 +8,6 @@ using Aliencube.EntityContextLibrary.Interfaces;
 
 using EventSourcingCqrsSample.EventHandlers;
 using EventSourcingCqrsSample.Events;
-using EventSourcingCqrsSample.Models.Requests;
-using EventSourcingCqrsSample.Models.Responses;
 using EventSourcingCqrsSample.Repositories;
 
 namespace EventSourcingCqrsSample.EventProcessors
@@ -30,16 +28,6 @@ namespace EventSourcingCqrsSample.EventProcessors
         /// <param name="uowm"><see cref="UnitOfWorkManager" /> instance.</param>
         /// <param name="handlers">List of event handlers.</param>
         public EventProcessor(IUnitOfWorkManager uowm, params IEventHandler[] handlers)
-            : this(uowm, handlers.ToList())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EventProcessor" /> class.
-        /// </summary>
-        /// <param name="uowm"><see cref="UnitOfWorkManager" /> instance.</param>
-        /// <param name="handlers">List of event handlers.</param>
-        public EventProcessor(IUnitOfWorkManager uowm, IEnumerable<IEventHandler> handlers)
         {
             if (uowm == null)
             {
@@ -54,16 +42,6 @@ namespace EventSourcingCqrsSample.EventProcessors
             }
 
             this._handlers = handlers;
-        }
-
-        /// <summary>
-        /// Processes the list of events.
-        /// </summary>
-        /// <param name="evs">List of events.</param>
-        /// <returns>Returns <c>True</c>, if all events have been consumed; otherwise returns <c>False.</c></returns>
-        public bool ProcessEvents(IEnumerable<BaseEvent> evs)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
