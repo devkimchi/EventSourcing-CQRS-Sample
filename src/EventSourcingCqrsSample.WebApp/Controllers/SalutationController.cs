@@ -17,7 +17,7 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
         /// </summary>
         /// <returns>Returns the list of <see cref="Salutation" />s.</returns>
         [Route("")]
-        public virtual async Task<List<Salutation>> Get()
+        public virtual async Task<SalutationCollection> Get()
         {
             var salutations = new List<Salutation>()
                                       {
@@ -27,7 +27,8 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
                                           new Salutation("Mx", "Mx"),
                                       };
 
-            return await Task.FromResult(salutations);
+            var collection = new SalutationCollection(salutations);
+            return await Task.FromResult(collection);
         }
     }
 }

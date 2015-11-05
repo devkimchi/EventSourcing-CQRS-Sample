@@ -7,7 +7,7 @@
 module app.angular.Directives {
     import EventStreamDataModel = angular.Models.EventStreamDataModel;
 
-    export interface IMainContentScope extends ng.IScope {
+    export interface IUserRegistrationScope extends ng.IScope {
         model: angular.Models.EventStreamDataModel;
     }
 
@@ -17,12 +17,12 @@ module app.angular.Directives {
         scope = {};
         templateUrl = "/App/components/userRegistration/userRegistration.html";
 
-        controller($scope: IMainContentScope, eventStreamFactory: angular.Factories.EventStreamFactory) {
+        controller($scope: IUserRegistrationScope, eventStreamFactory: angular.Factories.EventStreamFactory) {
             $scope.model = new EventStreamDataModel();
 
             eventStreamFactory.getResponse()
-                .success((eventStream: angular.Models.EventStreamResponseModel) => {
-                    $scope.model.streamId = eventStream.data.streamId;
+                .success((response: angular.Models.EventStreamResponseModel) => {
+                    $scope.model.streamId = response.data.streamId;
                     console.log($scope.model);
                 });
         }

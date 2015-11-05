@@ -23,12 +23,12 @@ namespace EventSourcingCqrsSample.EventHandlers.Map
             }
 
             Mapper.CreateMap<SalutationChangedEvent, EventStream>()
-                .ForMember(es => es.StreamId, o => o.MapFrom(ev => ev.EventStream))
-                .ForMember(es => es.EventName, o => o.MapFrom(ev => ev.Name))
-                .ForMember(es => es.EventType, o => o.MapFrom(ev => ev.GetType().FullName))
-                .ForMember(es => es.EventBody, o => o.MapFrom(ev => JsonConvert.SerializeObject(ev)))
-                .ForMember(es => es.DateProjected, o => o.MapFrom(ev => ev.Projector.DateProjected))
-                .ForMember(es => es.ProjectedBy, o => o.MapFrom(ev => ev.Projector.ProjectorId));
+                  .ForMember(es => es.StreamId, o => o.MapFrom(ev => ev.EventStream))
+                  .ForMember(es => es.EventName, o => o.MapFrom(ev => ev.Name))
+                  .ForMember(es => es.EventType, o => o.MapFrom(ev => ev.GetType().FullName))
+                  .ForMember(es => es.EventBody, o => o.MapFrom(ev => JsonConvert.SerializeObject(ev)))
+                  .ForMember(es => es.DateProjected, o => o.MapFrom(ev => ev.Projector.DateProjected))
+                  .ForMember(es => es.ProjectedBy, o => o.MapFrom(ev => ev.Projector.ProjectorId));
 
             this.Initialised = true;
         }

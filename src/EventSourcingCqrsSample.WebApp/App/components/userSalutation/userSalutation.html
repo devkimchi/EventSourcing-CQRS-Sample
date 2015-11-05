@@ -1,6 +1,11 @@
 ﻿<div class="form-group">
-    <label for="salutation">Title</label>
-    <select class="form-control" id="salutation" name="salutation">
-        <option ng-repeat="salutation in model.salutations" value="{{salutation.value}}">{{salutation.text}}</option>
+    <label for="{{model.id}}">Title</label>
+    <select class="form-control"
+            id="{{model.id}}"
+            name="{{model.name}}"
+            ng-model="model.value"
+            ng-options="salutation.value as salutation.text for salutation in model.salutations"
+            ng-change="change($event)">
+        <option value="">Select</option>
     </select>
 </div>

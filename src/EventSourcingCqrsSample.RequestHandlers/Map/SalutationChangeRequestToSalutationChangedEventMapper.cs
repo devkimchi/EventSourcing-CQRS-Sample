@@ -22,9 +22,10 @@ namespace EventSourcingCqrsSample.RequestHandlers.Map
             }
 
             Mapper.CreateMap<SalutationChangeRequest, SalutationChangedEvent>()
-                .ForMember(ev => ev.ElementId, o => o.MapFrom(req => req.Id))
-                .ForMember(ev => ev.ElementName, o => o.MapFrom(req => req.Name))
-                .ForMember(ev => ev.ElementValue, o => o.MapFrom(req => req.Value));
+                  .ForMember(ev => ev.EventStream, o => o.MapFrom(req => req.StreamId))
+                  .ForMember(ev => ev.ElementId, o => o.MapFrom(req => req.Id))
+                  .ForMember(ev => ev.ElementName, o => o.MapFrom(req => req.Name))
+                  .ForMember(ev => ev.ElementValue, o => o.MapFrom(req => req.Value));
 
             this.Initialised = true;
         }

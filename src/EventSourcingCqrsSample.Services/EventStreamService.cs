@@ -110,7 +110,7 @@ namespace EventSourcingCqrsSample.Services
                                {
                                    Data = new SalutationResponseData()
                                               {
-                                                  Salutation = request.Value
+                                                  Value = request.Value
                                               }
                                };
             }

@@ -6,8 +6,8 @@
     public class SalutationResponseData : BaseResponseData
     {
         /// <summary>
-        /// Gets or sets the salutation.
+        /// Gets or sets the salutation value.
         /// </summary>
-        public string Salutation { get; set; }
+        public string Value { get; set; }
     }
 }

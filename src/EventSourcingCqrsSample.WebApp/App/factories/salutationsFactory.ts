@@ -1,16 +1,22 @@
 ﻿/// <reference path="../../Scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="../models/salutationModel.ts" />
 
 "use strict";
 
 module app.angular.Factories {
     export class SalutationsFactory {
-        private _baseUrl: string = "/api/salutations";
+        private _getSalutationsUrl: string = "/api/salutations";
+        private _postSalutationUrl: string = "/api/events/salutation-changed";
 
         constructor(private $http: ng.IHttpService) {
         }
 
-        getResponse(): ng.IHttpPromise<Array<angular.Models.Salutation>> {
-            return this.$http.get<Array<angular.Models.Salutation>>(this._baseUrl);
+        getSalutations(): ng.IHttpPromise<angular.Models.SalutationResoponseModel> {
+            return this.$http.get<angular.Models.SalutationResoponseModel>(this._getSalutationsUrl);
+        }
+
+        postSalutationChange(request: angular.Models.SalutationChangeRequestModel): ng.IHttpPromise<angular.Models.SalutationChangeResponseModel> {
+            return this.$http.post<angular.Models.SalutationChangeResponseModel>(this._postSalutationUrl, request);
         }
     }
 }

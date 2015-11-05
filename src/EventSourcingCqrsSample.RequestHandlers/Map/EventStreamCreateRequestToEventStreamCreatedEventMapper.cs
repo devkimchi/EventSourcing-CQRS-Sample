@@ -22,7 +22,7 @@ namespace EventSourcingCqrsSample.RequestHandlers.Map
             }
 
             Mapper.CreateMap<EventStreamCreateRequest, EventStreamCreatedEvent>()
-                .ForMember(ev => ev.EventStream, o => o.MapFrom(req => req.StreamId));
+                  .ForMember(ev => ev.EventStream, o => o.MapFrom(req => req.StreamId));
 
             this.Initialised = true;
         }
