@@ -7,13 +7,13 @@ module app.angular.Factories {
     import EventStreamResponseModel = angular.Models.EventStreamResponseModel;
 
     export class EventStreamFactory {
-        private _baseUrl: string = "/api/events/stream";
+        private _eventStreamUrl: string = "/api/events/stream";
 
         constructor(private $http: ng.IHttpService) {
         }
 
-        getResponse(): ng.IHttpPromise<EventStreamResponseModel> {
-            return this.$http.get<EventStreamResponseModel>(this._baseUrl);
+        getEventStream(): ng.IHttpPromise<EventStreamResponseModel> {
+            return this.$http.get<EventStreamResponseModel>(this._eventStreamUrl);
         }
 }
 }
