@@ -22,7 +22,8 @@ module app.angular.Directives {
             var $select = element.find("select");
             $select.on("change", () => {
                 var streamId = element.data("stream-id");
-                $scope.change($select.attr("id"), $select.attr("name"), $select.val().replace("string:", ""), streamId);
+                var value = $scope.model.value;
+                $scope.change($select.attr("id"), $select.attr("name"), value, streamId);
             });
         }
 
