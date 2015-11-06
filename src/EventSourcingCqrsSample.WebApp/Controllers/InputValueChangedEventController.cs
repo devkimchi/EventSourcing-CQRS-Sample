@@ -82,5 +82,18 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
             var response = await this._service.ChangeEmailAsync(request);
             return response;
         }
+
+        /// <summary>
+        /// Sets the user.
+        /// </summary>
+        /// <param name="request">The <see cref="UserCreateRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="UserCreateResponse" /> instance.</returns>
+        [HttpPost]
+        [Route("user-created")]
+        public virtual async Task<UserCreateResponse> SetUser([FromBody] UserCreateRequest request)
+        {
+            var response = await this._service.CreateUserAsync(request);
+            return response;
+        }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Requests\EmailChangeRequest.cs" />
     <Compile Include="Requests\EventStreamCreateRequest.cs" />
     <Compile Include="Requests\InputChangeRequest.cs" />
+    <Compile Include="Requests\UserCreateRequest.cs" />
     <Compile Include="Requests\UsernameChangeRequest.cs" />
     <Compile Include="Responses\Data\BaseResponseData.cs" />
     <Compile Include="Responses\Data\EmailResponseData.cs" />
@@ -54,8 +55,10 @@
     <Compile Include="Responses\Data\ResponseError.cs" />
     <Compile Include="Responses\Data\SalutationResponseData.cs" />
     <Compile Include="Responses\Data\UsernameResponseData.cs" />
+    <Compile Include="Responses\Data\UserResponseData.cs" />
     <Compile Include="Responses\EmailChangeResponse.cs" />
     <Compile Include="Responses\EventStreamCreateResponse.cs" />
+    <Compile Include="Responses\UserCreateResponse.cs" />
     <Compile Include="Responses\UsernameChangeResponse.cs" />
     <Compile Include="ViewModels\Home\HomeIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

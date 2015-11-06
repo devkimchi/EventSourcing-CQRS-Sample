@@ -217,6 +217,51 @@ namespace EventSourcingCqrsSample.Services
         }
 
         /// <summary>
+        /// Creates user asynchronously.
+        /// </summary>
+        /// <param name="request">The <see cref="UserCreateRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="UserCreateResponse" /> instance.</returns>
+        public async Task<UserCreateResponse> CreateUserAsync(UserCreateRequest request)
+        {
+            var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
+            if (handler == null)
+            {
+                return await Task.FromResult(default(UserCreateResponse));
+            }
+
+            var ev = handler.CreateEvent(request) as UserCreatedEvent;
+            PopulateBaseProperties(ev);
+
+            UserCreateResponse response;
+            try
+            {
+                await this._processor.ProcessEventsAsync(new[] { ev });
+                response = new UserCreateResponse()
+                               {
+                                   Data = new UserResponseData()
+                                              {
+                                                  Title = ev.Title,
+                                                  Name = ev.Username,
+                                                  Email = ev.Email,
+                                              }
+                               };
+            }
+            catch (Exception ex)
+            {
+                response = new UserCreateResponse()
+                               {
+                                   Error = new ResponseError()
+                                               {
+                                                   Message = ex.Message,
+                                                   StackTrace = ex.StackTrace,
+                                               }
+                               };
+            }
+
+            return await Task.FromResult(response);
+        }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public virtual void Dispose()

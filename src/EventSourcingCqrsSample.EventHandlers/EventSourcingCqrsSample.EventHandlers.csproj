@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="BaseEventHandler.cs" />
     <Compile Include="EmailChangedEventHandler.cs" />
+    <Compile Include="Map\UserCreatedEventToEventStreamMapper.cs" />
+    <Compile Include="UserCreatedEventHandler.cs" />
     <Compile Include="UsernameChangedEventHandler.cs" />
     <Compile Include="SalutationChangedEventHandler.cs" />
     <Compile Include="EventStreamCreatedEventHandler.cs" />

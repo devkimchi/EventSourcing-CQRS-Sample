@@ -38,5 +38,12 @@ namespace EventSourcingCqrsSample.Services
         /// <param name="request">The <see cref="EmailChangeRequest" /> instance.</param>
         /// <returns>Returns the <see cref="EmailChangeResponse" /> instance.</returns>
         Task<EmailChangeResponse> ChangeEmailAsync(EmailChangeRequest request);
+
+        /// <summary>
+        /// Creates user asynchronously.
+        /// </summary>
+        /// <param name="request">The <see cref="UserCreateRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="UserCreateResponse" /> instance.</returns>
+        Task<UserCreateResponse> CreateUserAsync(UserCreateRequest request);
     }
 }
