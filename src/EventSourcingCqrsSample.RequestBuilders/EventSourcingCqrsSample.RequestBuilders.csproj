@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BAD1320E-28F7-4BCA-B388-17862755E147}</ProjectGuid>
+    <ProjectGuid>{4FD88751-A1C2-433C-8449-3848E09274A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventSourcingCqrsSample.EventHandlers</RootNamespace>
-    <AssemblyName>EventSourcingCqrsSample.EventHandlers</AssemblyName>
+    <RootNamespace>EventSourcingCqrsSample.RequestBuilders</RootNamespace>
+    <AssemblyName>EventSourcingCqrsSample.RequestBuilders</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,20 +34,12 @@
       <HintPath>..\packages\Aliencube.EntityContextLibrary.1.1.0.0\lib\net45\Aliencube.EntityContextLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -61,26 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEventHandler.cs" />
-    <Compile Include="EmailChangedEventHandler.cs" />
-    <Compile Include="Map\UserCreatedEventToEventStreamMapper.cs" />
-    <Compile Include="UserCreatedEventHandler.cs" />
-    <Compile Include="UsernameChangedEventHandler.cs" />
-    <Compile Include="SalutationChangedEventHandler.cs" />
-    <Compile Include="EventStreamCreatedEventHandler.cs" />
-    <Compile Include="IEventHandler.cs" />
-    <Compile Include="Map\BaseEventToEventStreamMapper.cs" />
-    <Compile Include="Map\SalutationChangedEventToEventStreamMapper.cs" />
-    <Compile Include="Map\EmailChangedEventToEventStreamMapper.cs" />
-    <Compile Include="Map\UsernameChangedEventToEventStreamMapper.cs" />
-    <Compile Include="Map\EventStreamCreatedEventToEventStreamMapper.cs" />
-    <Compile Include="Map\IEventToEventStreamMapper.cs" />
+    <Compile Include="IRequestBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCreateRequestBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EventSourcingCqrsSample.Events\EventSourcingCqrsSample.Events.csproj">
-      <Project>{b3531b0f-2bba-4748-b070-8a99d2f557ca}</Project>
-      <Name>EventSourcingCqrsSample.Events</Name>
+    <ProjectReference Include="..\EventSourcingCqrsSample.EventHandlers\EventSourcingCqrsSample.EventHandlers.csproj">
+      <Project>{bad1320e-28f7-4bca-b388-17862755e147}</Project>
+      <Name>EventSourcingCqrsSample.EventHandlers</Name>
     </ProjectReference>
     <ProjectReference Include="..\EventSourcingCqrsSample.Models\EventSourcingCqrsSample.Models.csproj">
       <Project>{3218be2a-22d0-40a8-bae5-713068ddfc09}</Project>

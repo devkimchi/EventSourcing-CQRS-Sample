@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.Eve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.RequestHandlers", "EventSourcingCqrsSample.RequestHandlers\EventSourcingCqrsSample.RequestHandlers.csproj", "{80C89552-A53C-42C7-B3A5-DB36C73942F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingCqrsSample.RequestBuilders", "EventSourcingCqrsSample.RequestBuilders\EventSourcingCqrsSample.RequestBuilders.csproj", "{4FD88751-A1C2-433C-8449-3848E09274A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{80C89552-A53C-42C7-B3A5-DB36C73942F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80C89552-A53C-42C7-B3A5-DB36C73942F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80C89552-A53C-42C7-B3A5-DB36C73942F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FD88751-A1C2-433C-8449-3848E09274A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FD88751-A1C2-433C-8449-3848E09274A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FD88751-A1C2-433C-8449-3848E09274A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FD88751-A1C2-433C-8449-3848E09274A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

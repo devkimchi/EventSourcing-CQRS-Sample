@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 using Aliencube.EntityContextLibrary.Interfaces;
 
 using EventSourcingCqrsSample.EventHandlers.Map;
 using EventSourcingCqrsSample.Events;
+using EventSourcingCqrsSample.Models.Requests;
 using EventSourcingCqrsSample.Repositories;
 
 namespace EventSourcingCqrsSample.EventHandlers
@@ -37,6 +39,18 @@ namespace EventSourcingCqrsSample.EventHandlers
             }
 
             this._repository = repository;
+        }
+
+        /// <summary>
+        /// Checks whether the given request can be built or not.
+        /// </summary>
+        /// <typeparam name="TReq">Type of request.</typeparam>
+        /// <param name="request">Request instance.</param>
+        /// <returns>Returns <c>True</c>, if the given request can be built; otherwise returns <c>False</c>.</returns>
+        public override bool CanBuild<TReq>(BaseRequest request)
+        {
+            var req = request as TReq;
+            return req != null;
         }
 
         /// <summary>

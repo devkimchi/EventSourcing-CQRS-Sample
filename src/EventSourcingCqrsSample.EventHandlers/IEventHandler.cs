@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using EventSourcingCqrsSample.Events;
+using EventSourcingCqrsSample.Models.Requests;
 
 namespace EventSourcingCqrsSample.EventHandlers
 {
@@ -23,5 +24,13 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <param name="ev">Event instance.</param>
         /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
         Task<bool> ProcessAsync(BaseEvent ev);
+
+        /// <summary>
+        /// Checks whether the given request can be built or not.
+        /// </summary>
+        /// <typeparam name="TReq">Type of request.</typeparam>
+        /// <param name="request">Request instance.</param>
+        /// <returns>Returns <c>True</c>, if the given request can be built; otherwise returns <c>False</c>.</returns>
+        bool CanBuild<TReq>(BaseRequest request) where TReq : BaseRequest;
     }
 }
