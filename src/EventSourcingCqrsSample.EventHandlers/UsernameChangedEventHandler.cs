@@ -10,19 +10,19 @@ using EventSourcingCqrsSample.Repositories;
 namespace EventSourcingCqrsSample.EventHandlers
 {
     /// <summary>
-    /// This represents the processor entity for the <see cref="GivenNameChangedEvent" /> class.
+    /// This represents the processor entity for the <see cref="UsernameChangedEvent" /> class.
     /// </summary>
-    public class GivenNameChangedEventHandler : BaseEventHandler<GivenNameChangedEvent>
+    public class UsernameChangedEventHandler : BaseEventHandler<UsernameChangedEvent>
     {
-        private readonly IEventToEventStreamMapper<GivenNameChangedEvent> _mapper;
+        private readonly IEventToEventStreamMapper<UsernameChangedEvent> _mapper;
         private readonly IBaseRepository<EventStream> _repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GivenNameChangedEventHandler" /> class.
+        /// Initializes a new instance of the <see cref="UsernameChangedEventHandler" /> class.
         /// </summary>
         /// <param name="mapper">event stream mapper instance.</param>
         /// <param name="repository">event stream repository instance.</param>
-        public GivenNameChangedEventHandler(IEventToEventStreamMapper<GivenNameChangedEvent> mapper, IBaseRepository<EventStream> repository)
+        public UsernameChangedEventHandler(IEventToEventStreamMapper<UsernameChangedEvent> mapper, IBaseRepository<EventStream> repository)
         {
             if (mapper == null)
             {
@@ -46,7 +46,7 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <returns>Returns <c>True</c>, if the given event has been processed; otherwise returns <c>False</c>.</returns>
         protected override async Task<bool> OnProcessingAsync(BaseEvent ev)
         {
-            var stream = this._mapper.Map(ev as GivenNameChangedEvent);
+            var stream = this._mapper.Map(ev as UsernameChangedEvent);
 
             this._repository.Add(stream);
             return await Task.FromResult(true);

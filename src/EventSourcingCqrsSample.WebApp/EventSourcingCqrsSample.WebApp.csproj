@@ -239,12 +239,18 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\App.ts" />
+    <TypeScriptCompile Include="App\components\userEmail\userEmail.ts" />
+    <TypeScriptCompile Include="App\components\userName\userName.ts" />
     <TypeScriptCompile Include="App\components\userRegistration\userRegistration.ts" />
     <TypeScriptCompile Include="App\components\userSalutation\userSalutation.ts" />
     <TypeScriptCompile Include="App\factories\eventStreamFactory.ts" />
     <TypeScriptCompile Include="App\factories\salutationsFactory.ts" />
+    <TypeScriptCompile Include="App\factories\emailFactory.ts" />
+    <TypeScriptCompile Include="App\factories\usernameFactory.ts" />
     <TypeScriptCompile Include="App\models\errorModel.ts" />
     <TypeScriptCompile Include="App\models\eventStreamModel.ts" />
+    <TypeScriptCompile Include="App\models\emailModel.ts" />
+    <TypeScriptCompile Include="App\models\usernameModel.ts" />
     <TypeScriptCompile Include="App\models\salutationModel.ts" />
     <TypeScriptCompile Include="App\models\registrationModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

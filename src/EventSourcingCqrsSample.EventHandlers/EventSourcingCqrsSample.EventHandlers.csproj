@@ -63,14 +63,14 @@
   <ItemGroup>
     <Compile Include="BaseEventHandler.cs" />
     <Compile Include="EmailChangedEventHandler.cs" />
-    <Compile Include="GivenNameChangedEventHandler.cs" />
+    <Compile Include="UsernameChangedEventHandler.cs" />
     <Compile Include="SalutationChangedEventHandler.cs" />
     <Compile Include="EventStreamCreatedEventHandler.cs" />
     <Compile Include="IEventHandler.cs" />
     <Compile Include="Map\BaseEventToEventStreamMapper.cs" />
     <Compile Include="Map\SalutationChangedEventToEventStreamMapper.cs" />
     <Compile Include="Map\EmailChangedEventToEventStreamMapper.cs" />
-    <Compile Include="Map\GivenNameChangedEventToEventStreamMapper.cs" />
+    <Compile Include="Map\UsernameChangedEventToEventStreamMapper.cs" />
     <Compile Include="Map\EventStreamCreatedEventToEventStreamMapper.cs" />
     <Compile Include="Map\IEventToEventStreamMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

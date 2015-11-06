@@ -131,6 +131,92 @@ namespace EventSourcingCqrsSample.Services
         }
 
         /// <summary>
+        /// Changes username asynchronously.
+        /// </summary>
+        /// <param name="request">The <see cref="UsernameChangeRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="UsernameChangeResponse" /> instance.</returns>
+        public async Task<UsernameChangeResponse> ChangeUsernameAsync(UsernameChangeRequest request)
+        {
+            var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
+            if (handler == null)
+            {
+                return await Task.FromResult(default(UsernameChangeResponse));
+            }
+
+            var ev = handler.CreateEvent(request) as UsernameChangedEvent;
+            PopulateBaseProperties(ev);
+
+            UsernameChangeResponse response;
+            try
+            {
+                await this._processor.ProcessEventsAsync(new[] { ev });
+                response = new UsernameChangeResponse()
+                               {
+                                   Data = new UsernameResponseData()
+                                              {
+                                                  Value = request.Value
+                                              }
+                               };
+            }
+            catch (Exception ex)
+            {
+                response = new UsernameChangeResponse()
+                               {
+                                   Error = new ResponseError()
+                                               {
+                                                   Message = ex.Message,
+                                                   StackTrace = ex.StackTrace,
+                                               }
+                               };
+            }
+
+            return await Task.FromResult(response);
+        }
+
+        /// <summary>
+        /// Changes email asynchronously.
+        /// </summary>
+        /// <param name="request">The <see cref="EmailChangeRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="EmailChangeResponse" /> instance.</returns>
+        public async Task<EmailChangeResponse> ChangeEmailAsync(EmailChangeRequest request)
+        {
+            var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
+            if (handler == null)
+            {
+                return await Task.FromResult(default(EmailChangeResponse));
+            }
+
+            var ev = handler.CreateEvent(request) as EmailChangedEvent;
+            PopulateBaseProperties(ev);
+
+            EmailChangeResponse response;
+            try
+            {
+                await this._processor.ProcessEventsAsync(new[] { ev });
+                response = new EmailChangeResponse()
+                               {
+                                   Data = new EmailResponseData()
+                                              {
+                                                  Value = request.Value
+                                              }
+                               };
+            }
+            catch (Exception ex)
+            {
+                response = new EmailChangeResponse()
+                               {
+                                   Error = new ResponseError()
+                                               {
+                                                   Message = ex.Message,
+                                                   StackTrace = ex.StackTrace,
+                                               }
+                               };
+            }
+
+            return await Task.FromResult(response);
+        }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public virtual void Dispose()

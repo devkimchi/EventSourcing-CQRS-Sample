@@ -3,7 +3,7 @@
     /// <summary>
     /// This represents the event entity when given name change occurs.
     /// </summary>
-    public class GivenNameChangedEvent : InputValueChangedEvent
+    public class UsernameChangedEvent : InputValueChangedEvent
     {
         /// <summary>
         /// Gets the name of the event.

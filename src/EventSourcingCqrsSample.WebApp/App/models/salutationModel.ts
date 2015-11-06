@@ -10,8 +10,6 @@ module app.angular.Models {
     }
 
     export class SalutationCollectionDataModel {
-        id: string;
-        name: string;
         value: string;
         salutations: Array<SalutationDataModel>;
     }

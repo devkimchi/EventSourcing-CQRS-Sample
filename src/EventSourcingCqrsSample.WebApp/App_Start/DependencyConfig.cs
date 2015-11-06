@@ -92,12 +92,32 @@ namespace EventSourcingCqrsSample.WebApp
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
+            builder.RegisterType<UsernameChangedEventToEventStreamMapper>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<EmailChangedEventToEventStreamMapper>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
             builder.RegisterType<EventStreamCreatedEventHandler>()
                    .As<IEventHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
             builder.RegisterType<SalutationChangedEventHandler>()
+                   .As<IEventHandler>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<UsernameChangedEventHandler>()
+                   .As<IEventHandler>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<EmailChangedEventHandler>()
                    .As<IEventHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
@@ -115,12 +135,32 @@ namespace EventSourcingCqrsSample.WebApp
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
+            builder.RegisterType<UsernameChangeRequestToUsernameChangedEventMapper>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<EmailChangeRequestToEmailChangedEventMapper>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
             builder.RegisterType<EventStreamCreateRequestHandler>()
                    .As<IRequestHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
             builder.RegisterType<SalutationChangeRequestHandler>()
+                   .As<IRequestHandler>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<UsernameChangeRequestHandler>()
+                   .As<IRequestHandler>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<EmailChangeRequestHandler>()
                    .As<IRequestHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();

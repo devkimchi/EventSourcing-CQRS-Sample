@@ -56,5 +56,31 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
             var response = await this._service.ChangeSalutationAsync(request);
             return response;
         }
+
+        /// <summary>
+        /// Sets the username value.
+        /// </summary>
+        /// <param name="request">The <see cref="UsernameChangeRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="UsernameChangeResponse" /> instance.</returns>
+        [HttpPost]
+        [Route("username-changed")]
+        public virtual async Task<UsernameChangeResponse> SetUsername([FromBody] UsernameChangeRequest request)
+        {
+            var response = await this._service.ChangeUsernameAsync(request);
+            return response;
+        }
+
+        /// <summary>
+        /// Sets the email value.
+        /// </summary>
+        /// <param name="request">The <see cref="EmailChangeRequest" /> instance.</param>
+        /// <returns>Returns the <see cref="EmailChangeResponse" /> instance.</returns>
+        [HttpPost]
+        [Route("email-changed")]
+        public virtual async Task<EmailChangeResponse> SetEmail([FromBody] EmailChangeRequest request)
+        {
+            var response = await this._service.ChangeEmailAsync(request);
+            return response;
+        }
     }
 }

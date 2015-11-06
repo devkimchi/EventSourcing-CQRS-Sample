@@ -43,7 +43,7 @@
     <Compile Include="BaseEvent.cs" />
     <Compile Include="EventStreamCreatedEvent.cs" />
     <Compile Include="EmailChangedEvent.cs" />
-    <Compile Include="GivenNameChangedEvent.cs" />
+    <Compile Include="UsernameChangedEvent.cs" />
     <Compile Include="InputValueChangedEvent.cs" />
     <Compile Include="Projector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,7 +5,7 @@
 
 module app.angular.Directives {
     import SalutationCollectionDataModel = angular.Models.SalutationCollectionDataModel;
-    import SalutationChangeRequestModel = app.angular.Models.SalutationChangeRequestModel;
+    import SalutationChangeRequestModel = angular.Models.SalutationChangeRequestModel;
 
     export interface IUserSalutationScope extends ng.IScope {
         model: angular.Models.SalutationCollectionDataModel;

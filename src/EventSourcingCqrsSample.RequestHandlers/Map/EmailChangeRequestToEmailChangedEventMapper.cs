@@ -6,10 +6,10 @@ using EventSourcingCqrsSample.Models.Requests;
 namespace EventSourcingCqrsSample.RequestHandlers.Map
 {
     /// <summary>
-    /// This represents the mapper entity for <see cref="UsernameChangeRequest" /> to <see cref="UsernameChangedEvent" />.
+    /// This represents the mapper entity for <see cref="EmailChangeRequest" /> to <see cref="EmailChangedEvent" />.
     /// </summary>
-    public class UsernameChangeRequestToUsernameChangedEventMapper :
-        BaseRequestToEventMapper<UsernameChangeRequest, UsernameChangedEvent>
+    public class EmailChangeRequestToEmailChangedEventMapper :
+        BaseRequestToEventMapper<EmailChangeRequest, EmailChangedEvent>
     {
         /// <summary>
         /// Initialises the mapping definition.
@@ -21,7 +21,7 @@ namespace EventSourcingCqrsSample.RequestHandlers.Map
                 return;
             }
 
-            Mapper.CreateMap<UsernameChangeRequest, UsernameChangedEvent>()
+            Mapper.CreateMap<EmailChangeRequest, EmailChangedEvent>()
                   .ForMember(ev => ev.EventStream, o => o.MapFrom(req => req.StreamId))
                   .ForMember(ev => ev.ElementId, o => o.MapFrom(req => req.Id))
                   .ForMember(ev => ev.ElementName, o => o.MapFrom(req => req.Name))
