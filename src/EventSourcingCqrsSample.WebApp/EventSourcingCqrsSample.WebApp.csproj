@@ -169,7 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\components\userEmail\userEmail.html" />
+    <Content Include="App\components\userMaterialised\userMaterialised.html" />
     <Content Include="App\components\userName\userName.html" />
+    <Content Include="App\components\userRegistered\userRegistered.html" />
     <Content Include="App\components\userRegistration\userRegistration.html" />
     <Content Include="App\components\userSalutation\userSalutation.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -252,7 +254,6 @@
     <TypeScriptCompile Include="App\models\emailModel.ts" />
     <TypeScriptCompile Include="App\models\usernameModel.ts" />
     <TypeScriptCompile Include="App\models\salutationModel.ts" />
-    <TypeScriptCompile Include="App\models\registrationModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
