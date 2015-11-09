@@ -89,7 +89,7 @@ namespace EventSourcingCqrsSample.WebApp.Controllers
         /// <param name="request">The <see cref="UserCreateRequest" /> instance.</param>
         /// <returns>Returns the <see cref="UserCreateResponse" /> instance.</returns>
         [HttpPost]
-        [Route("user-created")]
+        [Route("registration")]
         public virtual async Task<UserCreateResponse> SetUser([FromBody] UserCreateRequest request)
         {
             var response = await this._service.CreateUserAsync(request);

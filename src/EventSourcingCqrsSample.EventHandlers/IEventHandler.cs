@@ -32,5 +32,12 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <param name="request">Request instance.</param>
         /// <returns>Returns <c>True</c>, if the given request can be built; otherwise returns <c>False</c>.</returns>
         bool CanBuild<TReq>(BaseRequest request) where TReq : BaseRequest;
+
+        /// <summary>
+        /// Builds the request using the latest event stored asynchronously.
+        /// </summary>
+        /// <param name="request">The request instance.</param>
+        /// <returns>Returns the <see cref="Task"/>.</returns>
+        Task BuildRequestAsync(BaseRequest request);
     }
 }

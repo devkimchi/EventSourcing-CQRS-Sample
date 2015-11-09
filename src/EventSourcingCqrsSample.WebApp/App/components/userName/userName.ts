@@ -27,17 +27,15 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserNameScope, usernameFactory: angular.Factories.UsernameFactory) {
+        controller($scope: IUserNameScope, usernameFactory: angular.Factories.UsernameFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
             $scope.model = new UsernameDataModel();
 
             $scope.change = (id, name, value, streamId) => {
-                var request = new UsernameChangeRequestModel();
-                request.id = id;
-                request.name = name;
-                request.value = value;
-                request.streamId = streamId;
+                var request = new UsernameChangeRequestModel(id, name, value, streamId);
+
                 usernameFactory.postUsernameChange(request)
                     .success((response: angular.Models.UsernameChangeResponseModel) => {
+                        materialViewFactory.setUsername(response.data.value);
                         console.log(response);
                     })
                     .error((response: angular.Models.UsernameChangeResponseModel) => {

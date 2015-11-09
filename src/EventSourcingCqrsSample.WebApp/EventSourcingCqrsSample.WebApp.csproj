@@ -244,12 +244,14 @@
     <TypeScriptCompile Include="App\components\userEmail\userEmail.ts" />
     <TypeScriptCompile Include="App\components\userMaterialised\userMaterialised.ts" />
     <TypeScriptCompile Include="App\components\userName\userName.ts" />
+    <TypeScriptCompile Include="App\components\userRegistered\userRegistered.ts" />
     <TypeScriptCompile Include="App\components\userRegistration\userRegistration.ts" />
     <TypeScriptCompile Include="App\components\userSalutation\userSalutation.ts" />
     <TypeScriptCompile Include="App\factories\eventStreamFactory.ts" />
     <TypeScriptCompile Include="App\factories\materialViewFactory.ts" />
     <TypeScriptCompile Include="App\factories\salutationsFactory.ts" />
     <TypeScriptCompile Include="App\factories\emailFactory.ts" />
+    <TypeScriptCompile Include="App\factories\storageViewFactory.ts" />
     <TypeScriptCompile Include="App\factories\usernameFactory.ts" />
     <TypeScriptCompile Include="App\models\materialViewModel.ts" />
     <TypeScriptCompile Include="App\models\errorModel.ts" />
@@ -257,6 +259,7 @@
     <TypeScriptCompile Include="App\models\emailModel.ts" />
     <TypeScriptCompile Include="App\models\usernameModel.ts" />
     <TypeScriptCompile Include="App\models\salutationModel.ts" />
+    <TypeScriptCompile Include="App\models\userRegistrationModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

@@ -6,6 +6,7 @@
 
 module app.angular.Directives {
     import EventStreamDataModel = angular.Models.EventStreamDataModel;
+    import UserRegistrationRequestModel = angular.Models.UserRegistrationRequestModel;
 
     export interface IUserRegistrationScope extends ng.IScope {
         model: angular.Models.EventStreamDataModel;
@@ -26,7 +27,7 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserRegistrationScope, eventStreamFactory: angular.Factories.EventStreamFactory) {
+        controller($scope: IUserRegistrationScope, eventStreamFactory: angular.Factories.EventStreamFactory, storageViewFactory: angular.Factories.StorageViewFactory) {
             $scope.model = new EventStreamDataModel();
 
             eventStreamFactory.getEventStream()
@@ -36,7 +37,13 @@ module app.angular.Directives {
                 });
 
             $scope.click = (streamId) => {
-                console.log(streamId);
+                var request = new UserRegistrationRequestModel(streamId);
+
+                eventStreamFactory.registerUser(request)
+                    .success((response: angular.Models.UserRegistrationResponseModel) => {
+                        storageViewFactory.setStorageView(response.data.title, response.data.username, response.data.email);
+                        console.log(response);
+                    });
             }
         }
     }

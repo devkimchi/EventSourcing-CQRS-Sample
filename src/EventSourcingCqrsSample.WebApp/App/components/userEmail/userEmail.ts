@@ -27,17 +27,15 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserEmailScope, emailFactory: angular.Factories.EmailFactory) {
+        controller($scope: IUserEmailScope, emailFactory: angular.Factories.EmailFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
             $scope.model = new EmailDataModel();
 
             $scope.change = (id, name, value, streamId) => {
-                var request = new EmailChangeRequestModel();
-                request.id = id;
-                request.name = name;
-                request.value = value;
-                request.streamId = streamId;
+                var request = new EmailChangeRequestModel(id, name, value, streamId);
+
                 emailFactory.postEmailChange(request)
                     .success((response: angular.Models.EmailChangeResponseModel) => {
+                        materialViewFactory.setEmail(response.data.value);
                         console.log(response);
                     })
                     .error((response: angular.Models.EmailChangeResponseModel) => {

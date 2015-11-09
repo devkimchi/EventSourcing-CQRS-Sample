@@ -223,6 +223,10 @@ namespace EventSourcingCqrsSample.Services
         /// <returns>Returns the <see cref="UserCreateResponse" /> instance.</returns>
         public async Task<UserCreateResponse> CreateUserAsync(UserCreateRequest request)
         {
+            foreach (var handler in this._handlers.Where(p => p.CanBuild(request)))
+            {
+                
+            }
             var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
             if (handler == null)
             {

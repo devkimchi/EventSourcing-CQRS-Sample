@@ -48,6 +48,16 @@ namespace EventSourcingCqrsSample.EventHandlers
         }
 
         /// <summary>
+        /// Builds the request using the latest event stored asynchronously.
+        /// </summary>
+        /// <param name="request">The request instance.</param>
+        /// <returns>Returns the <see cref="Task"/>.</returns>
+        public virtual async Task BuildRequestAsync(BaseRequest request)
+        {
+            await Task.FromResult(false);
+        }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public virtual void Dispose()

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Aliencube.EntityContextLibrary.Interfaces;
@@ -7,6 +9,8 @@ using EventSourcingCqrsSample.EventHandlers.Map;
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Models.Requests;
 using EventSourcingCqrsSample.Repositories;
+
+using Newtonsoft.Json;
 
 namespace EventSourcingCqrsSample.EventHandlers
 {
@@ -17,6 +21,7 @@ namespace EventSourcingCqrsSample.EventHandlers
     {
         private readonly IEventToEventStreamMapper<SalutationChangedEvent> _mapper;
         private readonly IBaseRepository<EventStream> _repository;
+        private readonly string _eventType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SalutationChangedEventHandler" /> class.
@@ -38,6 +43,8 @@ namespace EventSourcingCqrsSample.EventHandlers
             }
 
             this._repository = repository;
+
+            this._eventType = typeof(SalutationChangedEvent).FullName;
         }
 
         /// <summary>
@@ -50,6 +57,24 @@ namespace EventSourcingCqrsSample.EventHandlers
         {
             var req = request as TReq;
             return req != null;
+        }
+
+        /// <summary>
+        /// Builds the request using the latest event stored asynchronously.
+        /// </summary>
+        /// <param name="request">The request instance.</param>
+        /// <returns>Returns the <see cref="Task"/>.</returns>
+        public override async Task BuildRequestAsync(BaseRequest request)
+        {
+            var stream =
+                await
+                this._repository.Get()
+                    .Where(p => p.StreamId == request.StreamId && p.EventType.Equals(this._eventType))
+                    .OrderByDescending(p => p.Sequence)
+                    .FirstOrDefaultAsync();
+
+            var ev = JsonConvert.DeserializeObject<SalutationChangedEvent>(stream.EventBody);
+            (request as UserCreateRequest).Title = ev.ElementValue;
         }
 
         /// <summary>
