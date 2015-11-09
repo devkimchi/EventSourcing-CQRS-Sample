@@ -27,7 +27,7 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserSalutationScope, salutationsFactory: angular.Factories.SalutationsFactory) {
+        controller($scope: IUserSalutationScope, salutationsFactory: angular.Factories.SalutationsFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
             $scope.model = new SalutationCollectionDataModel();
 
             salutationsFactory.getSalutations()
@@ -37,13 +37,11 @@ module app.angular.Directives {
                 });
 
             $scope.change = (id, name, value, streamId) => {
-                var request = new SalutationChangeRequestModel();
-                request.id = id;
-                request.name = name;
-                request.value = value;
-                request.streamId = streamId;
+                var request = new SalutationChangeRequestModel(id, name, value, streamId);
+
                 salutationsFactory.postSalutationChange(request)
                     .success((response: angular.Models.SalutationChangeResponseModel) => {
+                        materialViewFactory.setSalutation(response.data.value);
                         console.log(response);
                     })
                     .error((response: angular.Models.SalutationChangeResponseModel) => {

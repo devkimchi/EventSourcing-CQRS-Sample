@@ -19,6 +19,13 @@ module app.angular.Models {
     }
 
     export class SalutationChangeRequestModel {
+        constructor(id: string = null, name: string = null, value: string = null, streamId: string = null) {
+            this.id = id;
+            this.name = name;
+            this.value = value;
+            this.streamId = streamId;
+        }
+
         id: string;
         name: string;
         value: string;
