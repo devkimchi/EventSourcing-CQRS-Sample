@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Aliencube.EntityContextLibrary.Interfaces;
@@ -6,6 +9,8 @@ using Aliencube.EntityContextLibrary.Interfaces;
 using EventSourcingCqrsSample.EventHandlers.Map;
 using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Repositories;
+
+using Newtonsoft.Json;
 
 namespace EventSourcingCqrsSample.EventHandlers
 {
@@ -16,6 +21,7 @@ namespace EventSourcingCqrsSample.EventHandlers
     {
         private readonly IEventToEventStreamMapper<EventStreamCreatedEvent> _mapper;
         private readonly IBaseRepository<EventStream> _repository;
+        private readonly string _eventType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EventStreamCreatedEventHandler" /> class.
@@ -37,6 +43,25 @@ namespace EventSourcingCqrsSample.EventHandlers
             }
 
             this._repository = repository;
+
+            this._eventType = typeof(EventStreamCreatedEvent).FullName;
+        }
+
+        /// <summary>
+        /// Called while loading events from the repository asynchronously.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the list of events.</returns>
+        protected override async Task<IEnumerable<BaseEvent>> OnLoadAsync(Guid streamId)
+        {
+            var streams = await this._repository
+                                    .Get()
+                                    .Where(p => p.EventType.Equals(this._eventType, StringComparison.InvariantCultureIgnoreCase))
+                                    .OrderByDescending(p => p.Sequence)
+                                    .ToListAsync();
+
+            var events = streams.Select(p => JsonConvert.DeserializeObject<EventStreamCreatedEvent>(p.EventBody));
+            return events;
         }
 
         /// <summary>

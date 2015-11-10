@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Aliencube.EntityContextLibrary;
 using Aliencube.EntityContextLibrary.Interfaces;
 
 using EventSourcingCqrsSample.EventHandlers;
@@ -25,7 +24,7 @@ namespace EventSourcingCqrsSample.EventProcessors
         /// <summary>
         /// Initializes a new instance of the <see cref="EventProcessor" /> class.
         /// </summary>
-        /// <param name="uowm"><see cref="UnitOfWorkManager" /> instance.</param>
+        /// <param name="uowm"><see cref="IUnitOfWorkManager" /> instance.</param>
         /// <param name="handlers">List of event handlers.</param>
         public EventProcessor(IUnitOfWorkManager uowm, params IEventHandler[] handlers)
         {

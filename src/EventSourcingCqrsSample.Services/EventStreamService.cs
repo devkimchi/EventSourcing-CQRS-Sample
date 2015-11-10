@@ -8,6 +8,7 @@ using EventSourcingCqrsSample.Events;
 using EventSourcingCqrsSample.Models.Requests;
 using EventSourcingCqrsSample.Models.Responses;
 using EventSourcingCqrsSample.Models.Responses.Data;
+using EventSourcingCqrsSample.RequestBuilders;
 using EventSourcingCqrsSample.RequestHandlers;
 
 namespace EventSourcingCqrsSample.Services
@@ -18,6 +19,7 @@ namespace EventSourcingCqrsSample.Services
     public class EventStreamService : IEventStreamService
     {
         private readonly IEventProcessor _processor;
+        private readonly IRequestBuilder _builder;
         private readonly IEnumerable<IRequestHandler> _handlers;
 
         private bool _disposed;
@@ -26,8 +28,9 @@ namespace EventSourcingCqrsSample.Services
         /// Initializes a new instance of the <see cref="EventStreamService" /> class.
         /// </summary>
         /// <param name="processor">The event processor instance.</param>
+        /// <param name="builder">The request builder instance.</param>
         /// <param name="handlers">The list of request handlers.</param>
-        public EventStreamService(IEventProcessor processor, params IRequestHandler[] handlers)
+        public EventStreamService(IEventProcessor processor, IRequestBuilder builder, params IRequestHandler[] handlers)
         {
             if (processor == null)
             {
@@ -35,6 +38,13 @@ namespace EventSourcingCqrsSample.Services
             }
 
             this._processor = processor;
+
+            if (builder == null)
+            {
+                throw new ArgumentNullException(nameof(builder));
+            }
+
+            this._builder = builder;
 
             if (handlers == null)
             {
@@ -77,10 +87,10 @@ namespace EventSourcingCqrsSample.Services
                 response = new EventStreamCreateResponse()
                                {
                                    Error = new ResponseError()
-                                               {
-                                                   Message = ex.Message,
-                                                   StackTrace = ex.StackTrace,
-                                               }
+                                           {
+                                               Message = ex.Message,
+                                               StackTrace = ex.StackTrace,
+                                           }
                                };
             }
 
@@ -121,8 +131,8 @@ namespace EventSourcingCqrsSample.Services
                                {
                                    Error = new ResponseError()
                                                {
-                                                    Message = ex.Message,
-                                                    StackTrace = ex.StackTrace,
+                                                   Message = ex.Message,
+                                                   StackTrace = ex.StackTrace,
                                                }
                                };
             }
@@ -223,10 +233,8 @@ namespace EventSourcingCqrsSample.Services
         /// <returns>Returns the <see cref="UserCreateResponse" /> instance.</returns>
         public async Task<UserCreateResponse> CreateUserAsync(UserCreateRequest request)
         {
-            foreach (var handler in this._handlers.Where(p => p.CanBuild(request)))
-            {
-                
-            }
+            await this._builder.BuildAsync(request);
+
             var handler = this._handlers.SingleOrDefault(p => p.CanHandle(request));
             if (handler == null)
             {
@@ -241,14 +249,14 @@ namespace EventSourcingCqrsSample.Services
             {
                 await this._processor.ProcessEventsAsync(new[] { ev });
                 response = new UserCreateResponse()
-                               {
-                                   Data = new UserResponseData()
-                                              {
-                                                  Title = ev.Title,
-                                                  Name = ev.Username,
-                                                  Email = ev.Email,
-                                              }
-                               };
+                              {
+                                  Data = new UserResponseData()
+                                             {
+                                                 Title = ev.Title,
+                                                 Username = ev.Username,
+                                                 Email = ev.Email,
+                                             }
+                              };
             }
             catch (Exception ex)
             {

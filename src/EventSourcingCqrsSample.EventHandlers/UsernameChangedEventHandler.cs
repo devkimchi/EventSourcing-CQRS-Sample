@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,15 +67,25 @@ namespace EventSourcingCqrsSample.EventHandlers
         /// <returns>Returns the <see cref="Task"/>.</returns>
         public override async Task BuildRequestAsync(BaseRequest request)
         {
-            var stream =
-                await
-                this._repository.Get()
-                    .Where(p => p.StreamId == request.StreamId && p.EventType.Equals(this._eventType))
-                    .OrderByDescending(p => p.Sequence)
-                    .FirstOrDefaultAsync();
+            var ev = (await this.LoadLatestAsync(request.StreamId)) as UsernameChangedEvent;
+            (request as UserCreateRequest).Name = ev.ElementValue;
+        }
 
-            var ev = JsonConvert.DeserializeObject<UsernameChangedEvent>(stream.EventBody);
-            (request as UserCreateRequest).Title = ev.ElementValue;
+        /// <summary>
+        /// Called while loading events from the repository asynchronously.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the list of events.</returns>
+        protected override async Task<IEnumerable<BaseEvent>> OnLoadAsync(Guid streamId)
+        {
+            var streams = await this._repository
+                                    .Get()
+                                    .Where(p => p.EventType.Equals(this._eventType, StringComparison.InvariantCultureIgnoreCase))
+                                    .OrderByDescending(p => p.Sequence)
+                                    .ToListAsync();
+
+            var events = streams.Select(p => JsonConvert.DeserializeObject<UsernameChangedEvent>(p.EventBody));
+            return events;
         }
 
         /// <summary>

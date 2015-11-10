@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using EventSourcingCqrsSample.Events;
@@ -11,6 +12,20 @@ namespace EventSourcingCqrsSample.EventHandlers
     /// </summary>
     public interface IEventHandler : IDisposable
     {
+        /// <summary>
+        /// Loads the list of events asynchronously.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the list of events.</returns>
+        Task<IEnumerable<BaseEvent>> LoadAsync(Guid streamId);
+
+        /// <summary>
+        /// Loads the latest event asynchronously.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the latest event.</returns>
+        Task<BaseEvent> LoadLatestAsync(Guid streamId);
+
         /// <summary>
         /// Checks whether the given event can be processed or not.
         /// </summary>

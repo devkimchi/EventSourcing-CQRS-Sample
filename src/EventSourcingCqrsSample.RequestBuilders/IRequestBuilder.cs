@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using EventSourcingCqrsSample.Models.Requests;
 
@@ -7,13 +8,13 @@ namespace EventSourcingCqrsSample.RequestBuilders
     /// <summary>
     /// This provides interfaces to request builders.
     /// </summary>
-    /// <typeparam name="T">Type of request.</typeparam>
-    public interface IRequestBuilder<in T> : IDisposable where T : BaseRequest
+    public interface IRequestBuilder : IDisposable
     {
         /// <summary>
-        /// Builds requests.
+        /// Builds requests asynchronously.
         /// </summary>
         /// <param name="request">The request.</param>
-        void Build(T request);
+        /// <returns>Returns <see cref="Task" />.</returns>
+        Task BuildAsync(BaseRequest request);
     }
 }

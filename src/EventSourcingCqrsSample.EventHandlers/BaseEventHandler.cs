@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using EventSourcingCqrsSample.Events;
@@ -13,6 +15,33 @@ namespace EventSourcingCqrsSample.EventHandlers
     public abstract class BaseEventHandler<T> : IEventHandler where T : BaseEvent
     {
         private bool _disposed;
+
+        /// <summary>
+        /// Loads the list of events.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the list of events.</returns>
+        public async Task<IEnumerable<BaseEvent>> LoadAsync(Guid streamId)
+        {
+            var events = await this.OnLoadAsync(streamId);
+            return events;
+        }
+
+        /// <summary>
+        /// Loads the latest event.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the latest event.</returns>
+        public async Task<BaseEvent> LoadLatestAsync(Guid streamId)
+        {
+            if (streamId == Guid.Empty)
+            {
+                return null;
+            }
+
+            var events = await this.LoadAsync(streamId);
+            return events.FirstOrDefault();
+        }
 
         /// <summary>
         /// Checks whether the given event can be processed or not.
@@ -69,6 +98,13 @@ namespace EventSourcingCqrsSample.EventHandlers
 
             this._disposed = true;
         }
+
+        /// <summary>
+        /// Called while loading events from the repository asynchronously.
+        /// </summary>
+        /// <param name="streamId">The stream id.</param>
+        /// <returns>Returns the list of events.</returns>
+        protected abstract Task<IEnumerable<BaseEvent>> OnLoadAsync(Guid streamId);
 
         /// <summary>
         /// Called while processing the event asynchronously.

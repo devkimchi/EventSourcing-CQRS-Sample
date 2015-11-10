@@ -22,7 +22,8 @@ namespace EventSourcingCqrsSample.RequestHandlers.Map
             }
 
             Mapper.CreateMap<UserCreateRequest, UserCreatedEvent>()
-                  .ForMember(ev => ev.EventStream, o => o.MapFrom(req => req.StreamId));
+                  .ForMember(ev => ev.EventStream, o => o.MapFrom(req => req.StreamId))
+                  .ForMember(ev => ev.Username, o => o.MapFrom(req => req.Name));
 
             this.Initialised = true;
         }

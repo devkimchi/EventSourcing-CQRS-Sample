@@ -12,6 +12,7 @@ using EventSourcingCqrsSample.EventHandlers;
 using EventSourcingCqrsSample.EventHandlers.Map;
 using EventSourcingCqrsSample.EventProcessors;
 using EventSourcingCqrsSample.Repositories;
+using EventSourcingCqrsSample.RequestBuilders;
 using EventSourcingCqrsSample.RequestHandlers;
 using EventSourcingCqrsSample.RequestHandlers.Map;
 using EventSourcingCqrsSample.Services;
@@ -37,7 +38,10 @@ namespace EventSourcingCqrsSample.WebApp
             RegisterDbContext(builder);
             RegisterRepositories(builder);
             RegisterServices(builder);
+            RegisterEventHandlerMappers(builder);
             RegisterEventHandlers(builder);
+            RegisterRequestBuilders(builder);
+            RegisterRequestHandlerMappers(builder);
             RegisterRequestHandlers(builder);
             RegisterEventProcessors(builder);
             RegisterWebAbstractions(builder);
@@ -70,6 +74,11 @@ namespace EventSourcingCqrsSample.WebApp
                    .AsImplementedInterfaces()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
+
+            builder.RegisterType<BaseRepository<User>>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
         }
 
         private static void RegisterServices(ContainerBuilder builder)
@@ -80,8 +89,13 @@ namespace EventSourcingCqrsSample.WebApp
                    .InstancePerLifetimeScope();
         }
 
-        private static void RegisterEventHandlers(ContainerBuilder builder)
+        private static void RegisterEventHandlerMappers(ContainerBuilder builder)
         {
+            builder.RegisterType<EmailChangedEventToEventStreamMapper>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
             builder.RegisterType<EventStreamCreatedEventToEventStreamMapper>()
                    .AsImplementedInterfaces()
                    .PropertiesAutowired()
@@ -97,8 +111,16 @@ namespace EventSourcingCqrsSample.WebApp
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<EmailChangedEventToEventStreamMapper>()
+            builder.RegisterType<UserCreatedEventToEventStreamMapper>()
                    .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+        }
+
+        private static void RegisterEventHandlers(ContainerBuilder builder)
+        {
+            builder.RegisterType<EmailChangedEventHandler>()
+                   .As<IEventHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
@@ -117,14 +139,27 @@ namespace EventSourcingCqrsSample.WebApp
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<EmailChangedEventHandler>()
+            builder.RegisterType<UserCreatedEventHandler>()
                    .As<IEventHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
         }
 
-        private static void RegisterRequestHandlers(ContainerBuilder builder)
+        private static void RegisterRequestBuilders(ContainerBuilder builder)
         {
+            builder.RegisterType<UserCreateRequestBuilder>()
+                   .As<IRequestBuilder>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+        }
+
+        private static void RegisterRequestHandlerMappers(ContainerBuilder builder)
+        {
+            builder.RegisterType<EmailChangeRequestToEmailChangedEventMapper>()
+                   .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
             builder.RegisterType<EventStreamCreateRequestToEventStreamCreatedEventMapper>()
                    .AsImplementedInterfaces()
                    .PropertiesAutowired()
@@ -135,13 +170,21 @@ namespace EventSourcingCqrsSample.WebApp
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<UsernameChangeRequestToUsernameChangedEventMapper>()
+            builder.RegisterType<UserCreateRequestToUserCreatedEventMapper>()
                    .AsImplementedInterfaces()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<EmailChangeRequestToEmailChangedEventMapper>()
+            builder.RegisterType<UsernameChangeRequestToUsernameChangedEventMapper>()
                    .AsImplementedInterfaces()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+        }
+
+        private static void RegisterRequestHandlers(ContainerBuilder builder)
+        {
+            builder.RegisterType<EmailChangeRequestHandler>()
+                   .As<IRequestHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
@@ -155,12 +198,12 @@ namespace EventSourcingCqrsSample.WebApp
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<UsernameChangeRequestHandler>()
+            builder.RegisterType<UserCreateRequestHandler>()
                    .As<IRequestHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();
 
-            builder.RegisterType<EmailChangeRequestHandler>()
+            builder.RegisterType<UsernameChangeRequestHandler>()
                    .As<IRequestHandler>()
                    .PropertiesAutowired()
                    .InstancePerLifetimeScope();

@@ -289,6 +289,10 @@
       <Project>{828695ec-67ad-42aa-b7b9-4b1fd76f461f}</Project>
       <Name>EventSourcingCqrsSample.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EventSourcingCqrsSample.RequestBuilders\EventSourcingCqrsSample.RequestBuilders.csproj">
+      <Project>{4fd88751-a1c2-433c-8449-3848e09274a7}</Project>
+      <Name>EventSourcingCqrsSample.RequestBuilders</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EventSourcingCqrsSample.RequestHandlers\EventSourcingCqrsSample.RequestHandlers.csproj">
       <Project>{80c89552-a53c-42c7-b3a5-db36c73942f8}</Project>
       <Name>EventSourcingCqrsSample.RequestHandlers</Name>

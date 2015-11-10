@@ -13,7 +13,7 @@
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; set; }
+        public string Username { get; set; }
 
         /// <summary>
         /// Gets or sets the email.
