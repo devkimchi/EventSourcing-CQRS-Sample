@@ -3,6 +3,22 @@
 This provides sample codes for event sourcing and CQRS pattern.
 
 
+## Related Posts ##
+
+You can find detailed explanations at:
+
+* [http://blog.aliencube.org](http://blog.aliencube.org) (in Korean)
+* [http://devkimchi.com](http://devkimchi.com) (in English)
+
+
+## Acknowledgements ##
+
+**Event Sourcing CQRS Sample** is written in:
+
+* VS2015 (C# 6.0) &ndash; I can't guarantee if this works in VS2013 (C# 5.0) or not.
+* [TypeScript](http://typescriptlang.org) and [AngularJS](https://angular.io).
+
+
 ## License ##
 
 **Event Sourcing CQRS Sample** is released under [MIT License](http://opensource.org/licenses/MIT)
