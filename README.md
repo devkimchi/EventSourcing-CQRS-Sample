@@ -19,6 +19,11 @@ You can find detailed explanations at:
 * [TypeScript](http://typescriptlang.org) and [AngularJS](https://angular.io).
 
 
+## Contribution ##
+
+Your contributions are always welcome! All your work should be done in your forked repository. Once you finish your work, please send us a pull request onto our `dev` branch for review.
+
+
 ## License ##
 
 **Event Sourcing CQRS Sample** is released under [MIT License](http://opensource.org/licenses/MIT)
