@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\components\userEmail\userEmail.html" />
-    <Content Include="App\components\userMaterialised\userMaterialised.html" />
+    <Content Include="App\components\userReplayed\userReplayed.html" />
     <Content Include="App\components\userName\userName.html" />
     <Content Include="App\components\userRegistered\userRegistered.html" />
     <Content Include="App\components\userRegistration\userRegistration.html" />
@@ -242,18 +242,18 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\App.ts" />
     <TypeScriptCompile Include="App\components\userEmail\userEmail.ts" />
-    <TypeScriptCompile Include="App\components\userMaterialised\userMaterialised.ts" />
+    <TypeScriptCompile Include="App\components\userReplayed\userReplayed.ts" />
     <TypeScriptCompile Include="App\components\userName\userName.ts" />
     <TypeScriptCompile Include="App\components\userRegistered\userRegistered.ts" />
     <TypeScriptCompile Include="App\components\userRegistration\userRegistration.ts" />
     <TypeScriptCompile Include="App\components\userSalutation\userSalutation.ts" />
     <TypeScriptCompile Include="App\factories\eventStreamFactory.ts" />
-    <TypeScriptCompile Include="App\factories\materialViewFactory.ts" />
+    <TypeScriptCompile Include="App\factories\replayViewFactory.ts" />
     <TypeScriptCompile Include="App\factories\salutationsFactory.ts" />
     <TypeScriptCompile Include="App\factories\emailFactory.ts" />
     <TypeScriptCompile Include="App\factories\storageViewFactory.ts" />
     <TypeScriptCompile Include="App\factories\usernameFactory.ts" />
-    <TypeScriptCompile Include="App\models\materialViewModel.ts" />
+    <TypeScriptCompile Include="App\models\replayViewModel.ts" />
     <TypeScriptCompile Include="App\models\errorModel.ts" />
     <TypeScriptCompile Include="App\models\eventStreamModel.ts" />
     <TypeScriptCompile Include="App\models\emailModel.ts" />

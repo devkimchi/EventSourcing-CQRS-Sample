@@ -3,7 +3,7 @@
 "use strict";
 
 module app.angular.Models {
-    export class MaterialViewModel {
+    export class ReplayViewModel {
         title: string;
         username: string;
         email: string;

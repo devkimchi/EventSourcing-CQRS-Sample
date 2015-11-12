@@ -1,5 +1,6 @@
 ﻿/// <reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
 /// <reference path="../../factories/usernameFactory.ts" />
+/// <reference path="../../factories/replayViewFactory.ts" />
 
 "use strict";
 
@@ -27,7 +28,7 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserNameScope, usernameFactory: angular.Factories.UsernameFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
+        controller($scope: IUserNameScope, usernameFactory: angular.Factories.UsernameFactory, replayViewFactory: angular.Factories.ReplayViewFactory) {
             $scope.model = new UsernameDataModel();
 
             $scope.change = (id, name, value, streamId) => {
@@ -35,7 +36,7 @@ module app.angular.Directives {
 
                 usernameFactory.postUsernameChange(request)
                     .success((response: angular.Models.UsernameChangeResponseModel) => {
-                        materialViewFactory.setUsername(response.data.value);
+                        replayViewFactory.setUsername(response.data.value);
                         console.log(response);
                     })
                     .error((response: angular.Models.UsernameChangeResponseModel) => {

@@ -1,17 +1,17 @@
 ﻿/// <reference path="../../Scripts/typings/angularjs/angular.d.ts" />
-/// <reference path="../models/materialViewModel.ts" />
+/// <reference path="../models/replayViewModel.ts" />
 
 "use strict";
 
 module app.angular.Factories {
-    import MaterialViewModel = angular.Models.MaterialViewModel;
+    import ReplayViewModel = angular.Models.ReplayViewModel;
 
-    export class MaterialViewFactory {
+    export class ReplayViewFactory {
         constructor(private $http: ng.IHttpService) {
-            this.model = new MaterialViewModel();
+            this.model = new ReplayViewModel();
         }
 
-        model: angular.Models.MaterialViewModel;
+        model: angular.Models.ReplayViewModel;
 
         setSalutation(title: string): void {
             if (title == undefined) {
@@ -37,14 +37,14 @@ module app.angular.Factories {
             this.model.email = email;
         }
 
-        getMaterialisedView(): angular.Models.MaterialViewModel {
+        getReplayedView(): angular.Models.ReplayViewModel {
             return this.model;
         }
     }
 }
 
 angular.module("app")
-    .factory("materialViewFactory", [
+    .factory("replayViewFactory", [
         "$http",
-        ($http) => new app.angular.Factories.MaterialViewFactory($http)
+        ($http) => new app.angular.Factories.ReplayViewFactory($http)
     ]);

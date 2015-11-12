@@ -1,5 +1,6 @@
 ﻿/// <reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
 /// <reference path="../../factories/salutationsFactory.ts" />
+/// <reference path="../../factories/replayViewFactory.ts" />
 
 "use strict";
 
@@ -27,7 +28,7 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserSalutationScope, salutationsFactory: angular.Factories.SalutationsFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
+        controller($scope: IUserSalutationScope, salutationsFactory: angular.Factories.SalutationsFactory, replayViewFactory: angular.Factories.ReplayViewFactory) {
             $scope.model = new SalutationCollectionDataModel();
 
             salutationsFactory.getSalutations()
@@ -41,7 +42,7 @@ module app.angular.Directives {
 
                 salutationsFactory.postSalutationChange(request)
                     .success((response: angular.Models.SalutationChangeResponseModel) => {
-                        materialViewFactory.setSalutation(response.data.value);
+                        replayViewFactory.setSalutation(response.data.value);
                         console.log(response);
                     })
                     .error((response: angular.Models.SalutationChangeResponseModel) => {

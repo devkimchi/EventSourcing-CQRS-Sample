@@ -1,5 +1,6 @@
 ﻿/// <reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
 /// <reference path="../../factories/emailFactory.ts" />
+/// <reference path="../../factories/replayViewFactory.ts" />
 
 "use strict";
 
@@ -27,7 +28,7 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserEmailScope, emailFactory: angular.Factories.EmailFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
+        controller($scope: IUserEmailScope, emailFactory: angular.Factories.EmailFactory, replayViewFactory: angular.Factories.ReplayViewFactory) {
             $scope.model = new EmailDataModel();
 
             $scope.change = (id, name, value, streamId) => {
@@ -35,7 +36,7 @@ module app.angular.Directives {
 
                 emailFactory.postEmailChange(request)
                     .success((response: angular.Models.EmailChangeResponseModel) => {
-                        materialViewFactory.setEmail(response.data.value);
+                        replayViewFactory.setEmail(response.data.value);
                         console.log(response);
                     })
                     .error((response: angular.Models.EmailChangeResponseModel) => {
