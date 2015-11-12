@@ -1,6 +1,8 @@
 ﻿/// <reference path="../../../Scripts/typings/angularjs/angular.d.ts" />
 /// <reference path="../../models/eventStreamModel.ts" />
+/// <reference path="../../models/userRegistrationModel.ts" />
 /// <reference path="../../factories/eventStreamFactory.ts" />
+/// <reference path="../../factories/materialViewFactory.ts" />
 
 "use strict";
 
@@ -27,7 +29,7 @@ module app.angular.Directives {
             });
         }
 
-        controller($scope: IUserRegistrationScope, eventStreamFactory: angular.Factories.EventStreamFactory, storageViewFactory: angular.Factories.StorageViewFactory) {
+        controller($scope: IUserRegistrationScope, eventStreamFactory: angular.Factories.EventStreamFactory, materialViewFactory: angular.Factories.MaterialViewFactory) {
             $scope.model = new EventStreamDataModel();
 
             eventStreamFactory.getEventStream()
@@ -41,7 +43,7 @@ module app.angular.Directives {
 
                 eventStreamFactory.registerUser(request)
                     .success((response: angular.Models.UserRegistrationResponseModel) => {
-                        storageViewFactory.setStorageView(response.data.title, response.data.username, response.data.email);
+                        materialViewFactory.setMaterialisedView(response.data.title, response.data.username, response.data.email);
                         console.log(response);
                     });
             }

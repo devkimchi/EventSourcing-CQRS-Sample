@@ -21,10 +21,4 @@ module app.angular.Models {
         data: UserRegistrationDataModel;
         error: ErrorModel;
     }
-
-    export class StorageViewModel {
-        title: string;
-        username: string;
-        email: string;
-    }
 }
